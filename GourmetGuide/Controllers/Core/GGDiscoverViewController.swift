@@ -7,8 +7,10 @@
 
 import UIKit
 
+/// Launch controller
 class GGDiscoverViewController: UIViewController {
 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
