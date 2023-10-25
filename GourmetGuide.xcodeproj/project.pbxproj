@@ -14,6 +14,9 @@
 		A4F33EAE2AE8891600778664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4F33EAC2AE8891600778664 /* LaunchScreen.storyboard */; };
 		A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */; };
 		A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */; };
+		A4F33EC02AE8BF7E00778664 /* UIView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBF2AE8BF7E00778664 /* UIView+EXT.swift */; };
+		A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */; };
+		A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		A4F33EAF2AE8891600778664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietaryButton.swift; sourceTree = "<group>"; };
 		A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+EXT.swift"; sourceTree = "<group>"; };
+		A4F33EBF2AE8BF7E00778664 /* UIView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXT.swift"; sourceTree = "<group>"; };
+		A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTitleLabel.swift; sourceTree = "<group>"; };
+		A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGBodyLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */,
+				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
+				A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -97,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */,
+				A4F33EBF2AE8BF7E00778664 /* UIView+EXT.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -188,10 +197,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */,
 				A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */,
 				A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */,
 				A4F33EA62AE8891500778664 /* GGDiscoverViewController.swift in Sources */,
+				A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */,
 				A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */,
+				A4F33EC02AE8BF7E00778664 /* UIView+EXT.swift in Sources */,
 				A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
