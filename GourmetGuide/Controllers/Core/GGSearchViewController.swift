@@ -8,9 +8,10 @@
 import UIKit
 
 /// ViewController to discover new recipes and search
-class GGDiscoverViewController: UIViewController {
+class GGSearchViewController: UIViewController {
     
-    let dietaryHeaderView = GGTitleLabel(textAlignment: .left, text: "Dietary Restrictions")
+    let searchField = GGSearchTextField()
+    let dietaryHeaderView = GGTitleLabel(textAlignment: .left, text: "Diet")
     
     let vegetarianButton = GGDietaryButton(dietaryType: .vegetarian)
     let veganButton = GGDietaryButton(dietaryType: .vegan)
@@ -28,11 +29,17 @@ class GGDiscoverViewController: UIViewController {
     
     /// Lays out the UI and constrains views
     private func layoutUI() {
-        view.addSubviews(dietaryHeaderView, buttonStackView)
+        view.addSubviews(searchField,dietaryHeaderView, buttonStackView)
         let padding: CGFloat = 25
         
         NSLayoutConstraint.activate([
-            dietaryHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (padding * 2)),
+            
+            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (padding * 2)),
+            searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            searchField.heightAnchor.constraint(equalToConstant: 50),
+            
+            dietaryHeaderView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: (padding * 2)),
             dietaryHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dietaryHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             dietaryHeaderView.heightAnchor.constraint(equalToConstant: 50),

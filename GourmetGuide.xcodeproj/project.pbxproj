@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A406628D2AE9733D002560C5 /* GGSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406628C2AE9733D002560C5 /* GGSearchTextField.swift */; };
 		A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA12AE8891500778664 /* AppDelegate.swift */; };
 		A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA32AE8891500778664 /* SceneDelegate.swift */; };
-		A4F33EA62AE8891500778664 /* GGDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA52AE8891500778664 /* GGDiscoverViewController.swift */; };
+		A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA52AE8891500778664 /* GGSearchViewController.swift */; };
 		A4F33EAB2AE8891600778664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4F33EAA2AE8891600778664 /* Assets.xcassets */; };
 		A4F33EAE2AE8891600778664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4F33EAC2AE8891600778664 /* LaunchScreen.storyboard */; };
 		A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */; };
@@ -20,10 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A406628C2AE9733D002560C5 /* GGSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSearchTextField.swift; sourceTree = "<group>"; };
 		A4F33E9E2AE8891500778664 /* GourmetGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F33EA12AE8891500778664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4F33EA32AE8891500778664 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A4F33EA52AE8891500778664 /* GGDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDiscoverViewController.swift; sourceTree = "<group>"; };
+		A4F33EA52AE8891500778664 /* GGSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSearchViewController.swift; sourceTree = "<group>"; };
 		A4F33EAA2AE8891600778664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4F33EAD2AE8891600778664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4F33EAF2AE8891600778664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +47,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A406628B2AE9714D002560C5 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
 		A4F33E952AE8891500778664 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +73,7 @@
 		A4F33EA02AE8891500778664 /* GourmetGuide */ = {
 			isa = PBXGroup;
 			children = (
+				A406628B2AE9714D002560C5 /* APIClient */,
 				A4F33EBD2AE88D9200778664 /* Other */,
 				A4F33EB82AE88A9F00778664 /* Utilities */,
 				A4F33EB72AE88A9400778664 /* Models */,
@@ -90,6 +100,7 @@
 				A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */,
 				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
 				A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */,
+				A406628C2AE9733D002560C5 /* GGSearchTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -122,7 +133,7 @@
 		A4F33EBE2AE892FC00778664 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				A4F33EA52AE8891500778664 /* GGDiscoverViewController.swift */,
+				A4F33EA52AE8891500778664 /* GGSearchViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -200,7 +211,8 @@
 				A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */,
 				A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */,
 				A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */,
-				A4F33EA62AE8891500778664 /* GGDiscoverViewController.swift in Sources */,
+				A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */,
+				A406628D2AE9733D002560C5 /* GGSearchTextField.swift in Sources */,
 				A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */,
 				A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */,
 				A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */,
