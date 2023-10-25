@@ -21,10 +21,12 @@ class GGBodyLabel: UILabel {
     
     /// Custom initializer for title label
     /// - Parameters:
-    ///   - textAlignment: text alignment
-    init(fontSize: CGFloat){
+    ///   - textAlignment: Text Alignment
+    ///   - text: <#text description#>
+    init(textAlignment: NSTextAlignment,text: String){
         super.init(frame: .zero)
         self.textAlignment = textAlignment
+        self.text = text
         self.font = UIFont.preferredFont(forTextStyle: .body)
         configure()
     }
