@@ -22,7 +22,7 @@ class GGBodyLabel: UILabel {
     /// Custom initializer for title label
     /// - Parameters:
     ///   - textAlignment: Text Alignment
-    ///   - text: <#text description#>
+    ///   - text: Text to display
     init(textAlignment: NSTextAlignment,text: String){
         super.init(frame: .zero)
         self.textAlignment = textAlignment

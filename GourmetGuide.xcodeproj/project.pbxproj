@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A406628D2AE9733D002560C5 /* GGSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406628C2AE9733D002560C5 /* GGSearchTextField.swift */; };
+		A406628F2AE97D01002560C5 /* GGMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406628E2AE97D01002560C5 /* GGMainTabBarController.swift */; };
+		A40662912AE97D29002560C5 /* GGDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40662902AE97D29002560C5 /* GGDiscoverViewController.swift */; };
+		A40662932AE97D55002560C5 /* GGMyFridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40662922AE97D55002560C5 /* GGMyFridgeViewController.swift */; };
+		A40662952AE97D67002560C5 /* GGFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40662942AE97D67002560C5 /* GGFavoritesViewController.swift */; };
+		A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230942AE9873800881DFC /* GGDietaryView.swift */; };
 		A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA12AE8891500778664 /* AppDelegate.swift */; };
 		A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA32AE8891500778664 /* SceneDelegate.swift */; };
 		A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA52AE8891500778664 /* GGSearchViewController.swift */; };
@@ -22,6 +27,11 @@
 
 /* Begin PBXFileReference section */
 		A406628C2AE9733D002560C5 /* GGSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSearchTextField.swift; sourceTree = "<group>"; };
+		A406628E2AE97D01002560C5 /* GGMainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGMainTabBarController.swift; sourceTree = "<group>"; };
+		A40662902AE97D29002560C5 /* GGDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDiscoverViewController.swift; sourceTree = "<group>"; };
+		A40662922AE97D55002560C5 /* GGMyFridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGMyFridgeViewController.swift; sourceTree = "<group>"; };
+		A40662942AE97D67002560C5 /* GGFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGFavoritesViewController.swift; sourceTree = "<group>"; };
+		A43230942AE9873800881DFC /* GGDietaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietaryView.swift; sourceTree = "<group>"; };
 		A4F33E9E2AE8891500778664 /* GourmetGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F33EA12AE8891500778664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4F33EA32AE8891500778664 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +111,7 @@
 				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
 				A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */,
 				A406628C2AE9733D002560C5 /* GGSearchTextField.swift */,
+				A43230942AE9873800881DFC /* GGDietaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,7 +144,11 @@
 		A4F33EBE2AE892FC00778664 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				A406628E2AE97D01002560C5 /* GGMainTabBarController.swift */,
+				A40662902AE97D29002560C5 /* GGDiscoverViewController.swift */,
 				A4F33EA52AE8891500778664 /* GGSearchViewController.swift */,
+				A40662922AE97D55002560C5 /* GGMyFridgeViewController.swift */,
+				A40662942AE97D67002560C5 /* GGFavoritesViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -209,11 +224,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */,
+				A40662932AE97D55002560C5 /* GGMyFridgeViewController.swift in Sources */,
 				A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */,
+				A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */,
+				A406628F2AE97D01002560C5 /* GGMainTabBarController.swift in Sources */,
+				A40662952AE97D67002560C5 /* GGFavoritesViewController.swift in Sources */,
 				A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */,
 				A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */,
 				A406628D2AE9733D002560C5 /* GGSearchTextField.swift in Sources */,
 				A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */,
+				A40662912AE97D29002560C5 /* GGDiscoverViewController.swift in Sources */,
 				A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */,
 				A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */,
 				A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */,

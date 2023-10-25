@@ -13,18 +13,21 @@ class GGSearchViewController: UIViewController {
     let searchField = GGSearchTextField()
     let dietaryHeaderView = GGTitleLabel(textAlignment: .left, text: "Diet")
     
-    let vegetarianButton = GGDietaryButton(dietaryType: .vegetarian)
-    let veganButton = GGDietaryButton(dietaryType: .vegan)
-    let ketoButton = GGDietaryButton(dietaryType: .keto)
-    let glutenFreeButton = GGDietaryButton(dietaryType: .glutenFree)
-    
+    let dietaryStackView = UIStackView()
     let buttonStackView = UIStackView()
+    
+    let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGBodyLabel(textAlignment: .center, text: "Vegan"))
+    let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGBodyLabel(textAlignment: .center, text: "No Meat"))
+    let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGBodyLabel(textAlignment: .center, text: "Keto"))
+    let glutenFree = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGBodyLabel(textAlignment: .center, text: "No Gluten"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        title = "Search"
         layoutUI()
-        configureStackView()
+        configureDietaryStackView()
+        configureButtonStackView()
     }
     
     /// Lays out the UI and constrains views
@@ -34,12 +37,12 @@ class GGSearchViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (padding * 2)),
+            searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (padding)),
             searchField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             searchField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             searchField.heightAnchor.constraint(equalToConstant: 50),
             
-            dietaryHeaderView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: (padding * 2)),
+            dietaryHeaderView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: (padding)),
             dietaryHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dietaryHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             dietaryHeaderView.heightAnchor.constraint(equalToConstant: 50),
@@ -47,15 +50,24 @@ class GGSearchViewController: UIViewController {
             buttonStackView.topAnchor.constraint(equalTo: dietaryHeaderView.bottomAnchor, constant: padding),
             buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            buttonStackView.heightAnchor.constraint(equalToConstant: 73.5)
+            
             
         ])
     }
     
+    /// Function that configures our Dietary stack view with button and label
+    private func configureDietaryStackView(){
+        view.addSubview(dietaryStackView)
+        dietaryStackView.translatesAutoresizingMaskIntoConstraints = false
+        dietaryStackView.addArrangedSubviews(veganView, vegetarianView, ketoView, glutenFree)
+        dietaryStackView.distribution = .fillEqually
+        dietaryStackView.spacing = 20
+    }
+    
     /// Function to configure the stackview that holds our buttons
-    private func configureStackView(){
+    private func configureButtonStackView(){
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.addArrangedSubviews(vegetarianButton, veganButton, ketoButton, glutenFreeButton)
+        buttonStackView.addArrangedSubview(dietaryStackView)
         buttonStackView.axis = .horizontal
         buttonStackView.distribution = .fillEqually
         buttonStackView.spacing = 10

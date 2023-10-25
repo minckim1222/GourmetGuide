@@ -10,8 +10,6 @@ import UIKit
 /// Text field for our search
 class GGSearchTextField: UITextField {
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

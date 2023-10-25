@@ -27,7 +27,7 @@ class GGTitleLabel: UILabel {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
         self.text = text
-        self.font = UIFont.preferredFont(forTextStyle: .extraLargeTitle)
+        self.font = UIFont.preferredFont(forTextStyle: .title1)
         configure()
     }
     
