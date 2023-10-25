@@ -23,6 +23,7 @@ class GGDietaryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Initializer for dietary button
     init(button: GGDietaryButton, label: GGBodyLabel){
         super.init(frame: .zero)
         self.button = button
@@ -30,7 +31,6 @@ class GGDietaryView: UIView {
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         configureStackView()
         layoutConstraints()
-
     }
     
     /// Vertical stackview that holds button and label underneath

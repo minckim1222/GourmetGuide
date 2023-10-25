@@ -64,6 +64,15 @@
 			path = APIClient;
 			sourceTree = "<group>";
 		};
+		A43230962AE993AB00881DFC /* GGDiscoverViews */ = {
+			isa = PBXGroup;
+			children = (
+				A43230942AE9873800881DFC /* GGDietaryView.swift */,
+				A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */,
+			);
+			path = GGDiscoverViews;
+			sourceTree = "<group>";
+		};
 		A4F33E952AE8891500778664 = {
 			isa = PBXGroup;
 			children = (
@@ -107,11 +116,10 @@
 		A4F33EB62AE88A8E00778664 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A4F33EB92AE88BAE00778664 /* GGDietaryButton.swift */,
+				A43230962AE993AB00881DFC /* GGDiscoverViews */,
 				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
 				A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */,
 				A406628C2AE9733D002560C5 /* GGSearchTextField.swift */,
-				A43230942AE9873800881DFC /* GGDietaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

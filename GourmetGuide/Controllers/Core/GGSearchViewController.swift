@@ -11,28 +11,28 @@ import UIKit
 class GGSearchViewController: UIViewController {
     
     let searchField = GGSearchTextField()
-    let dietaryHeaderView = GGTitleLabel(textAlignment: .left, text: "Diet")
+    let dietaryHeaderView = GGTitleLabel(textAlignment: .left, text: "Search by Diet")
+    let mealTypeHeaderView = GGTitleLabel(textAlignment: .left, text: "Search by Meal Type")
     
     let dietaryStackView = UIStackView()
-    let buttonStackView = UIStackView()
+    let dietaryContainerStackView = UIStackView()
+    let mealTypeStackView = UIStackView()
+    let mealContainerStackView = UIStackView()
     
-    let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGBodyLabel(textAlignment: .center, text: "Vegan"))
-    let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGBodyLabel(textAlignment: .center, text: "No Meat"))
-    let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGBodyLabel(textAlignment: .center, text: "Keto"))
-    let glutenFree = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGBodyLabel(textAlignment: .center, text: "No Gluten"))
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Search"
         layoutUI()
-        configureDietaryStackView()
-        configureButtonStackView()
+        configureStackViews()
+        
     }
     
     /// Lays out the UI and constrains views
     private func layoutUI() {
-        view.addSubviews(searchField,dietaryHeaderView, buttonStackView)
+        view.addSubviews(searchField,dietaryHeaderView, dietaryContainerStackView, mealTypeHeaderView, mealContainerStackView)
         let padding: CGFloat = 25
         
         NSLayoutConstraint.activate([
@@ -47,10 +47,18 @@ class GGSearchViewController: UIViewController {
             dietaryHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             dietaryHeaderView.heightAnchor.constraint(equalToConstant: 50),
             
-            buttonStackView.topAnchor.constraint(equalTo: dietaryHeaderView.bottomAnchor, constant: padding),
-            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dietaryContainerStackView.topAnchor.constraint(equalTo: dietaryHeaderView.bottomAnchor, constant: padding),
+            dietaryContainerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            dietaryContainerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             
+            mealTypeHeaderView.topAnchor.constraint(equalTo: dietaryContainerStackView.bottomAnchor, constant: 100),
+            mealTypeHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            mealTypeHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            mealTypeHeaderView.heightAnchor.constraint(equalToConstant: 50),
+            
+            mealContainerStackView.topAnchor.constraint(equalTo: mealTypeHeaderView.bottomAnchor, constant: padding),
+            mealContainerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            mealContainerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             
         ])
     }
@@ -58,20 +66,52 @@ class GGSearchViewController: UIViewController {
     /// Function that configures our Dietary stack view with button and label
     private func configureDietaryStackView(){
         view.addSubview(dietaryStackView)
+        let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGBodyLabel(textAlignment: .center, text: "Vegan"))
+        let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGBodyLabel(textAlignment: .center, text: "No Meat"))
+        let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGBodyLabel(textAlignment: .center, text: "Keto"))
+        let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGBodyLabel(textAlignment: .center, text: "No Gluten"))
         dietaryStackView.translatesAutoresizingMaskIntoConstraints = false
-        dietaryStackView.addArrangedSubviews(veganView, vegetarianView, ketoView, glutenFree)
+        dietaryStackView.addArrangedSubviews(veganView, vegetarianView, ketoView, glutenFreeView)
         dietaryStackView.distribution = .fillEqually
         dietaryStackView.spacing = 20
     }
     
-    /// Function to configure the stackview that holds our buttons
-    private func configureButtonStackView(){
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.addArrangedSubview(dietaryStackView)
-        buttonStackView.axis = .horizontal
-        buttonStackView.distribution = .fillEqually
-        buttonStackView.spacing = 10
+    /// Function to configure the DietaryContainer
+    private func configureDietaryContainer(){
+        dietaryContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+        dietaryContainerStackView.addArrangedSubview(dietaryStackView)
+        dietaryContainerStackView.axis = .horizontal
+        dietaryContainerStackView.distribution = .fillEqually
+        dietaryContainerStackView.spacing = 10
     }
     
+    /// Function that configures our MealType stack view with button and label
+    private func configureMealTypeStackView(){
+        view.addSubview(mealTypeStackView)
+        let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGBodyLabel(textAlignment: .center, text: "Breakfast"))
+        let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGBodyLabel(textAlignment: .center, text: "Main"))
+        let soupView = GGDietaryView(button: GGDietaryButton(mealType: .soup), label: GGBodyLabel(textAlignment: .center, text: "Soup"))
+        let dessertView = GGDietaryView(button: GGDietaryButton(mealType: .dessert), label: GGBodyLabel(textAlignment: .center, text: "Dessert"))
+        mealTypeStackView.translatesAutoresizingMaskIntoConstraints = false
+        mealTypeStackView.addArrangedSubviews(breakfastView, mainCourseView, soupView, dessertView)
+        mealTypeStackView.distribution = .fillEqually
+        mealTypeStackView.spacing = 20
+    }
+    
+    /// Function to configure MealType container
+    private func configureMealTypeContainer(){
+        mealContainerStackView.translatesAutoresizingMaskIntoConstraints = false
+        mealContainerStackView.addArrangedSubview(mealTypeStackView)
+        mealContainerStackView.axis = .horizontal
+        mealContainerStackView.distribution = .fillEqually
+        mealContainerStackView.spacing = 10
+    }
+    
+    private func configureStackViews(){
+        configureDietaryStackView()
+        configureDietaryContainer()
+        configureMealTypeStackView()
+        configureMealTypeContainer()
+    }
 }
 
