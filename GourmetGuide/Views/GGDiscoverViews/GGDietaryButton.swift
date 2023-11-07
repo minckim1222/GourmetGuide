@@ -27,7 +27,7 @@ class GGDietaryButton: UIButton {
     
     /// Initializer to specify which dietary type image to show
     /// - Parameter dietaryType: Raw value for dietary type passed in 
-    init(dietaryType: DietaryType){
+    init(dietaryType: GGDietType){
         super.init(frame: .zero)
         let dietaryImage = UIImage(named: dietaryType.rawValue)
         self.setImage(dietaryImage, for: .normal)
@@ -36,25 +36,13 @@ class GGDietaryButton: UIButton {
     
     /// Initializer to specify which meal type image to show
     /// - Parameter mealType: Raw value for meal type passed in
-    init(mealType: MealType){
+    init(mealType: GGDishType){
         super.init(frame: .zero)
         let mealTypeImage = UIImage(named: mealType.rawValue)
         self.setImage(mealTypeImage, for: .normal)
     }
 }
 
-/// Enum for dietary types
-enum DietaryType: String {
-    case glutenFree = "gluten free"
-    case vegetarian = "vegetarian"
-    case keto = "keto"
-    case vegan = "vegan"
-}
 
-/// Enum for meal types
-enum MealType: String {
-    case mainCourse = "main course"
-    case dessert = "dessert"
-    case soup = "soup"
-    case breakfast = "breakfast"
-}
+
+

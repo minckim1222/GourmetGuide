@@ -25,6 +25,9 @@
 		A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */; };
 		A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */; };
 		A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */; };
+		A4F451E72AFAC3DD00DF3ECA /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */; };
+		A4F451ED2AFAC9E800DF3ECA /* GGDishType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */; };
+		A4F451EF2AFACAEE00DF3ECA /* GGDietType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubviews+EXT.swift"; sourceTree = "<group>"; };
 		A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTitleLabel.swift; sourceTree = "<group>"; };
 		A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGBodyLabel.swift; sourceTree = "<group>"; };
+		A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDishType.swift; sourceTree = "<group>"; };
+		A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +137,11 @@
 		A4F33EB72AE88A9400778664 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A4F451E52AFAC39C00DF3ECA /* Cells */,
 				A43230972AE9A37900881DFC /* GGResponseModel.swift */,
 				A43230992AE9A3C300881DFC /* GGRecipe.swift */,
+				A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */,
+				A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -165,6 +174,14 @@
 				A40662942AE97D67002560C5 /* GGFavoritesViewController.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		A4F451E52AFAC39C00DF3ECA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,11 +263,14 @@
 				A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */,
 				A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */,
 				A406628D2AE9733D002560C5 /* GGSearchTextField.swift in Sources */,
+				A4F451E72AFAC3DD00DF3ECA /* SelfConfiguringCell.swift in Sources */,
+				A4F451ED2AFAC9E800DF3ECA /* GGDishType.swift in Sources */,
 				A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */,
 				A40662912AE97D29002560C5 /* GGDiscoverViewController.swift in Sources */,
 				A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */,
 				A43230982AE9A37900881DFC /* GGResponseModel.swift in Sources */,
 				A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */,
+				A4F451EF2AFACAEE00DF3ECA /* GGDietType.swift in Sources */,
 				A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */,
 				A432309A2AE9A3C300881DFC /* GGRecipe.swift in Sources */,
 			);
