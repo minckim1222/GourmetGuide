@@ -13,6 +13,11 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     static let reuseIdentifier = "GGFeaturedCollectionViewCell"
     private let recipeName = UILabel()
     private let recipeImage = UIImageView()
+    private var vegan = false, vegetarian = false, glutenFree = false
+    private var imageArray: [UIImageView] = []
+    private let stackView = UIStackView()
+    private let imageStackView = UIStackView()
+    private var addMoreImage = true
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,20 +35,31 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
         
         recipeName.font = UIFont.preferredFont(forTextStyle: .title1)
         recipeName.textColor = .systemBlue
-        
+        recipeName.numberOfLines = 1
         recipeImage.layer.cornerRadius = 5
         recipeImage.clipsToBounds = true
-        recipeImage.contentMode = .scaleAspectFit
+        recipeImage.contentMode = .scaleAspectFill
         
-        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubviews(seperator, recipeName, recipeImage)
+        stackView.addArrangedSubviews(recipeName, recipeImage)
         stackView.axis = .vertical
+        stackView.alignment = .leading
         contentView.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        stackView.setCustomSpacing(10, after: recipeName)
     }
     
+    /// Public func to configure our app
+    /// - Parameter recipe: Recipe object to configure with
     public func configure(with recipe: GGRecipe) {
         recipeName.text = recipe.title
         recipeImage.downloadImage(from: recipe.image)
     }
+
 }

@@ -84,6 +84,16 @@
 			path = APIClient;
 			sourceTree = "<group>";
 		};
+		A40C1FB42AFC135400CA2439 /* DeitaryEnums */ = {
+			isa = PBXGroup;
+			children = (
+				A4F451F82AFADC9300DF3ECA /* GGCuisineType.swift */,
+				A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */,
+				A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */,
+			);
+			path = DeitaryEnums;
+			sourceTree = "<group>";
+		};
 		A43230962AE993AB00881DFC /* GGDiscoverViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,13 +157,11 @@
 		A4F33EB72AE88A9400778664 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A40C1FB42AFC135400CA2439 /* DeitaryEnums */,
 				A4F451E52AFAC39C00DF3ECA /* Cells */,
 				A43230972AE9A37900881DFC /* GGResponseModel.swift */,
 				A43230992AE9A3C300881DFC /* GGRecipe.swift */,
-				A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */,
-				A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */,
 				A4F451F12AFAD11100DF3ECA /* GGDiscoverSection.swift */,
-				A4F451F82AFADC9300DF3ECA /* GGCuisineType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

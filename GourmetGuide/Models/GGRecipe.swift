@@ -9,10 +9,10 @@ import Foundation
 
 /// Model for single recipe
 struct GGRecipe: Codable, Hashable {
-    let vegetarian: Bool?
-    let vegan: Bool?
-    let glutenFree: Bool?
-    let dairyFree: Bool?
+    let vegetarian: Bool
+    let vegan: Bool
+    let glutenFree: Bool
+    let dairyFree: Bool
     let creditsText: String
     let sourceName: String
     let id: Int

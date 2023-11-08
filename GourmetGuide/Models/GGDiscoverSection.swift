@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Struct that holds model for Compositional Layout Section
 struct GGDiscoverSection: Codable, Hashable {
     let id: Int
     let type: String
