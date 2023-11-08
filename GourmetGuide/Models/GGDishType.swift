@@ -8,7 +8,7 @@
 import UIKit
 
 /// Enum for meal types
-enum GGDishType: String, Codable {
+enum GGDishType: String {
     case mainCourse = "main course"
     case dessert = "dessert"
     case soup = "soup"

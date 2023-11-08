@@ -8,7 +8,7 @@
 import Foundation
 
 /// Model for single recipe
-struct GGRecipe: Codable {
+struct GGRecipe: Codable, Hashable {
     let vegetarian: Bool?
     let vegan: Bool?
     let glutenFree: Bool?
