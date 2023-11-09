@@ -13,11 +13,8 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     static let reuseIdentifier = "GGFeaturedCollectionViewCell"
     private let recipeName = UILabel()
     private let recipeImage = UIImageView()
-    private var vegan = false, vegetarian = false, glutenFree = false
-    private var imageArray: [UIImageView] = []
-    private let stackView = UIStackView()
     private let imageStackView = UIStackView()
-    private var addMoreImage = true
+    private let dietaryStackView = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,27 +36,32 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
         recipeImage.layer.cornerRadius = 5
         recipeImage.clipsToBounds = true
         recipeImage.contentMode = .scaleAspectFill
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addArrangedSubviews(recipeName, recipeImage)
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        contentView.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
-        stackView.setCustomSpacing(10, after: recipeName)
+        configureImageStackView()
+
     }
     
+    /// Function configures the stackView for our title and image
+    private func configureImageStackView(){
+        
+        imageStackView.translatesAutoresizingMaskIntoConstraints = false
+        imageStackView.addArrangedSubviews(recipeName, recipeImage)
+        imageStackView.axis = .vertical
+        imageStackView.alignment = .leading
+        contentView.addSubview(imageStackView)
+        
+        NSLayoutConstraint.activate([
+            imageStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        imageStackView.setCustomSpacing(10, after: recipeName)
+    }
+
     /// Public func to configure our app
     /// - Parameter recipe: Recipe object to configure with
     public func configure(with recipe: GGRecipe) {
         recipeName.text = recipe.title
         recipeImage.downloadImage(from: recipe.image)
     }
-
 }
