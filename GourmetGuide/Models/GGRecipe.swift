@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct GGRecipeResponse: Codable {
+    let results: [GGRecipe]
+}
+
 /// Model for single recipe
 struct GGRecipe: Codable, Hashable {
     let vegetarian: Bool

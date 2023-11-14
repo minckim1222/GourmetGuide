@@ -15,6 +15,9 @@
 		A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230942AE9873800881DFC /* GGDietaryView.swift */; };
 		A43230982AE9A37900881DFC /* GGResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230972AE9A37900881DFC /* GGResponseModel.swift */; };
 		A432309A2AE9A3C300881DFC /* GGRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230992AE9A3C300881DFC /* GGRecipe.swift */; };
+		A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5BC2B02C749008582F4 /* GGService.swift */; };
+		A49CB5C12B02CDE1008582F4 /* GGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */; };
+		A49CB5C32B02F021008582F4 /* GGRandomRecipeResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */; };
 		A4E2FFBC2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2FFBB2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift */; };
 		A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA12AE8891500778664 /* AppDelegate.swift */; };
 		A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA32AE8891500778664 /* SceneDelegate.swift */; };
@@ -44,6 +47,9 @@
 		A43230942AE9873800881DFC /* GGDietaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietaryView.swift; sourceTree = "<group>"; };
 		A43230972AE9A37900881DFC /* GGResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGResponseModel.swift; sourceTree = "<group>"; };
 		A43230992AE9A3C300881DFC /* GGRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRecipe.swift; sourceTree = "<group>"; };
+		A49CB5BC2B02C749008582F4 /* GGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGService.swift; sourceTree = "<group>"; };
+		A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGEndpoint.swift; sourceTree = "<group>"; };
+		A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRandomRecipeResults.swift; sourceTree = "<group>"; };
 		A4E2FFBB2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGFeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4F33E9E2AE8891500778664 /* GourmetGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F33EA12AE8891500778664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,8 @@
 		A406628B2AE9714D002560C5 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				A49CB5BC2B02C749008582F4 /* GGService.swift */,
+				A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 				A40C1FB42AFC135400CA2439 /* DeitaryEnums */,
 				A4F451E52AFAC39C00DF3ECA /* Cells */,
 				A43230972AE9A37900881DFC /* GGResponseModel.swift */,
+				A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */,
 				A43230992AE9A3C300881DFC /* GGRecipe.swift */,
 				A4F451F12AFAD11100DF3ECA /* GGDiscoverSection.swift */,
 			);
@@ -279,14 +288,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4F451F22AFAD11100DF3ECA /* GGDiscoverSection.swift in Sources */,
+				A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */,
 				A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */,
 				A4F451F92AFADC9300DF3ECA /* GGCuisineType.swift in Sources */,
 				A40662932AE97D55002560C5 /* GGMyFridgeViewController.swift in Sources */,
 				A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */,
+				A49CB5C12B02CDE1008582F4 /* GGEndpoint.swift in Sources */,
 				A4F451F62AFAD35E00DF3ECA /* Decoder.swift in Sources */,
 				A4E2FFBC2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift in Sources */,
 				A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */,
 				A406628F2AE97D01002560C5 /* GGMainTabBarController.swift in Sources */,
+				A49CB5C32B02F021008582F4 /* GGRandomRecipeResults.swift in Sources */,
 				A40662952AE97D67002560C5 /* GGFavoritesViewController.swift in Sources */,
 				A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */,
 				A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */,

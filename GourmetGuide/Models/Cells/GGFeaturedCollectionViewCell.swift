@@ -31,7 +31,7 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
         seperator.backgroundColor = .quaternaryLabel
         
         recipeName.font = UIFont.preferredFont(forTextStyle: .title1)
-        recipeName.textColor = .systemBlue
+        recipeName.textColor = .label
         recipeName.numberOfLines = 1
         recipeImage.layer.cornerRadius = 5
         recipeImage.clipsToBounds = true
@@ -64,4 +64,5 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
         recipeName.text = recipe.title
         recipeImage.downloadImage(from: recipe.image)
     }
+    
 }
