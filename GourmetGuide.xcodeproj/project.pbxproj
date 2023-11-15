@@ -18,6 +18,11 @@
 		A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5BC2B02C749008582F4 /* GGService.swift */; };
 		A49CB5C12B02CDE1008582F4 /* GGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */; };
 		A49CB5C32B02F021008582F4 /* GGRandomRecipeResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */; };
+		A4C989C82B0402CE001341CD /* UIViewController+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C989C72B0402CE001341CD /* UIViewController+EXT.swift */; };
+		A4C989CD2B041409001341CD /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A4C989CC2B041409001341CD /* SDWebImage */; };
+		A4C989CF2B041409001341CD /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4C989CE2B041409001341CD /* SDWebImageMapKit */; };
+		A4C989D12B041547001341CD /* GGSingleRecipeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C989D02B041547001341CD /* GGSingleRecipeInfoViewController.swift */; };
+		A4DB89782B0566BE00EDDD4C /* String+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB89772B0566BE00EDDD4C /* String+EXT.swift */; };
 		A4E2FFBC2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2FFBB2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift */; };
 		A4F33EA22AE8891500778664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA12AE8891500778664 /* AppDelegate.swift */; };
 		A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EA32AE8891500778664 /* SceneDelegate.swift */; };
@@ -28,7 +33,7 @@
 		A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */; };
 		A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */; };
 		A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */; };
-		A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */; };
+		A4F33EC42AE8C1EC00778664 /* GGSummaryWebLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC32AE8C1EC00778664 /* GGSummaryWebLabel.swift */; };
 		A4F451E72AFAC3DD00DF3ECA /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */; };
 		A4F451ED2AFAC9E800DF3ECA /* GGDishType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */; };
 		A4F451EF2AFACAEE00DF3ECA /* GGDietType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */; };
@@ -50,6 +55,9 @@
 		A49CB5BC2B02C749008582F4 /* GGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGService.swift; sourceTree = "<group>"; };
 		A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGEndpoint.swift; sourceTree = "<group>"; };
 		A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRandomRecipeResults.swift; sourceTree = "<group>"; };
+		A4C989C72B0402CE001341CD /* UIViewController+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EXT.swift"; sourceTree = "<group>"; };
+		A4C989D02B041547001341CD /* GGSingleRecipeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSingleRecipeInfoViewController.swift; sourceTree = "<group>"; };
+		A4DB89772B0566BE00EDDD4C /* String+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EXT.swift"; sourceTree = "<group>"; };
 		A4E2FFBB2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGFeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4F33E9E2AE8891500778664 /* GourmetGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GourmetGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F33EA12AE8891500778664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +70,7 @@
 		A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+EXT.swift"; sourceTree = "<group>"; };
 		A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubviews+EXT.swift"; sourceTree = "<group>"; };
 		A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTitleLabel.swift; sourceTree = "<group>"; };
-		A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGBodyLabel.swift; sourceTree = "<group>"; };
+		A4F33EC32AE8C1EC00778664 /* GGSummaryWebLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSummaryWebLabel.swift; sourceTree = "<group>"; };
 		A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDishType.swift; sourceTree = "<group>"; };
 		A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietType.swift; sourceTree = "<group>"; };
@@ -77,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C989CF2B041409001341CD /* SDWebImageMapKit in Frameworks */,
+				A4C989CD2B041409001341CD /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +121,17 @@
 			path = GGDiscoverViews;
 			sourceTree = "<group>";
 		};
+		A4C989C62B03FFF8001341CD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */,
+				A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */,
+				A4C989C72B0402CE001341CD /* UIViewController+EXT.swift */,
+				A4DB89772B0566BE00EDDD4C /* String+EXT.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A4F33E952AE8891500778664 = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +154,6 @@
 				A406628B2AE9714D002560C5 /* APIClient */,
 				A4F33EBD2AE88D9200778664 /* Other */,
 				A4F33EB82AE88A9F00778664 /* Utilities */,
-				A4F33EB72AE88A9400778664 /* Models */,
 				A4F33EB62AE88A8E00778664 /* Views */,
 				A4F33EB52AE88A8800778664 /* Controllers */,
 				A4F33EAA2AE8891600778664 /* Assets.xcassets */,
@@ -147,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A4F33EBE2AE892FC00778664 /* Core */,
+				A4C989D02B041547001341CD /* GGSingleRecipeInfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,7 +177,7 @@
 			children = (
 				A43230962AE993AB00881DFC /* GGDiscoverViews */,
 				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
-				A4F33EC32AE8C1EC00778664 /* GGBodyLabel.swift */,
+				A4F33EC32AE8C1EC00778664 /* GGSummaryWebLabel.swift */,
 				A406628C2AE9733D002560C5 /* GGSearchTextField.swift */,
 			);
 			path = Views;
@@ -168,9 +189,9 @@
 				A40C1FB42AFC135400CA2439 /* DeitaryEnums */,
 				A4F451E52AFAC39C00DF3ECA /* Cells */,
 				A43230972AE9A37900881DFC /* GGResponseModel.swift */,
-				A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */,
 				A43230992AE9A3C300881DFC /* GGRecipe.swift */,
 				A4F451F12AFAD11100DF3ECA /* GGDiscoverSection.swift */,
+				A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,10 +199,10 @@
 		A4F33EB82AE88A9F00778664 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */,
-				A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */,
+				A4C989C62B03FFF8001341CD /* Extensions */,
 				A4F451F32AFAD29400DF3ECA /* GGDiscoverSection.json */,
 				A4F451F52AFAD35E00DF3ECA /* Decoder.swift */,
+				A4F33EB72AE88A9400778664 /* Models */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -232,6 +253,10 @@
 			dependencies = (
 			);
 			name = GourmetGuide;
+			packageProductDependencies = (
+				A4C989CC2B041409001341CD /* SDWebImage */,
+				A4C989CE2B041409001341CD /* SDWebImageMapKit */,
+			);
 			productName = GourmetGuide;
 			productReference = A4F33E9E2AE8891500778664 /* GourmetGuide.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +285,9 @@
 				Base,
 			);
 			mainGroup = A4F33E952AE8891500778664;
+			packageReferences = (
+				A4C989CB2B041409001341CD /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = A4F33E9F2AE8891500778664 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,7 +317,7 @@
 			files = (
 				A4F451F22AFAD11100DF3ECA /* GGDiscoverSection.swift in Sources */,
 				A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */,
-				A4F33EC42AE8C1EC00778664 /* GGBodyLabel.swift in Sources */,
+				A4F33EC42AE8C1EC00778664 /* GGSummaryWebLabel.swift in Sources */,
 				A4F451F92AFADC9300DF3ECA /* GGCuisineType.swift in Sources */,
 				A40662932AE97D55002560C5 /* GGMyFridgeViewController.swift in Sources */,
 				A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */,
@@ -297,11 +325,14 @@
 				A4F451F62AFAD35E00DF3ECA /* Decoder.swift in Sources */,
 				A4E2FFBC2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift in Sources */,
 				A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */,
+				A4DB89782B0566BE00EDDD4C /* String+EXT.swift in Sources */,
 				A406628F2AE97D01002560C5 /* GGMainTabBarController.swift in Sources */,
 				A49CB5C32B02F021008582F4 /* GGRandomRecipeResults.swift in Sources */,
+				A4C989D12B041547001341CD /* GGSingleRecipeInfoViewController.swift in Sources */,
 				A40662952AE97D67002560C5 /* GGFavoritesViewController.swift in Sources */,
 				A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */,
 				A4F33EA62AE8891500778664 /* GGSearchViewController.swift in Sources */,
+				A4C989C82B0402CE001341CD /* UIViewController+EXT.swift in Sources */,
 				A406628D2AE9733D002560C5 /* GGSearchTextField.swift in Sources */,
 				A4F451E72AFAC3DD00DF3ECA /* SelfConfiguringCell.swift in Sources */,
 				A4F451ED2AFAC9E800DF3ECA /* GGDishType.swift in Sources */,
@@ -523,6 +554,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4C989CB2B041409001341CD /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4C989CC2B041409001341CD /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4C989CB2B041409001341CD /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		A4C989CE2B041409001341CD /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4C989CB2B041409001341CD /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4F33E962AE8891500778664 /* Project object */;
 }

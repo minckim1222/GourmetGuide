@@ -8,7 +8,7 @@
 import UIKit
 
 /// UILabel for titles
-class GGBodyLabel: UILabel {
+class GGSummaryWebLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,6 +36,7 @@ class GGBodyLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         lineBreakMode = .byWordWrapping
         minimumScaleFactor = 0.75
-        textColor = .secondaryLabel
+        numberOfLines = 0
+        isUserInteractionEnabled = true
     }
 }

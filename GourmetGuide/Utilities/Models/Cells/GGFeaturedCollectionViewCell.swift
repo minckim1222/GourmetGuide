@@ -64,5 +64,5 @@ class GGFeaturedCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
         recipeName.text = recipe.title
         recipeImage.downloadImage(from: recipe.image)
     }
-    
+
 }

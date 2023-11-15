@@ -14,9 +14,7 @@ class GGDiscoverViewController: UIViewController {
     var randomRecipesArray: [GGRecipe] = []
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipe>?
-    private let spinnerIndicator = UIActivityIndicatorView(style: .medium)
-    private var loadingView = UIView()
-    private var isLoading = true
+    private var containerView = UIView()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -34,11 +32,11 @@ class GGDiscoverViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
         collectionView.register(GGFeaturedCollectionViewCell.self, forCellWithReuseIdentifier: GGFeaturedCollectionViewCell.reuseIdentifier)
-        
+        collectionView.delegate = self
         view.addSubview(collectionView)
+        showLoadingView()
         GGService.shared.getRandomRecipes(from: .randomRecipes) { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
             case .success(let recipes):
                 self.randomRecipesArray = recipes
@@ -46,7 +44,10 @@ class GGDiscoverViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+            dismissLoadingView()
+
         }
+        
     }
     
     /// Configure function for queueing cells
@@ -83,7 +84,6 @@ class GGDiscoverViewController: UIViewController {
             self.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
-    
     //MARK: Compositional Layouts
     
     private func createFeaturedSection(using section: GGDiscoverSection) -> NSCollectionLayoutSection {
@@ -114,3 +114,15 @@ class GGDiscoverViewController: UIViewController {
 
 }
 
+extension GGDiscoverViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        guard let item = dataSource?.itemIdentifier(for: indexPath) else {
+            return
+        }
+        let destinationVC = GGSingleRecipeInfoViewController()
+        destinationVC.recipe = item
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
+}

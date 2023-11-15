@@ -66,10 +66,10 @@ class GGSearchViewController: UIViewController {
     /// Function that configures our Dietary stack view with button and label
     private func configureDietaryStackView(){
         view.addSubview(dietaryStackView)
-        let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGBodyLabel(textAlignment: .center, text: "Vegan"))
-        let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGBodyLabel(textAlignment: .center, text: "No Meat"))
-        let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGBodyLabel(textAlignment: .center, text: "Keto"))
-        let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGBodyLabel(textAlignment: .center, text: "No Gluten"))
+        let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGSummaryWebLabel(textAlignment: .center, text: "Vegan"))
+        let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGSummaryWebLabel(textAlignment: .center, text: "No Meat"))
+        let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGSummaryWebLabel(textAlignment: .center, text: "Keto"))
+        let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGSummaryWebLabel(textAlignment: .center, text: "No Gluten"))
         dietaryStackView.translatesAutoresizingMaskIntoConstraints = false
         dietaryStackView.addArrangedSubviews(veganView, vegetarianView, ketoView, glutenFreeView)
         dietaryStackView.distribution = .fillEqually
@@ -88,10 +88,10 @@ class GGSearchViewController: UIViewController {
     /// Function that configures our MealType stack view with button and label
     private func configureMealTypeStackView(){
         view.addSubview(mealTypeStackView)
-        let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGBodyLabel(textAlignment: .center, text: "Breakfast"))
-        let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGBodyLabel(textAlignment: .center, text: "Main"))
-        let soupView = GGDietaryView(button: GGDietaryButton(mealType: .soup), label: GGBodyLabel(textAlignment: .center, text: "Soup"))
-        let dessertView = GGDietaryView(button: GGDietaryButton(mealType: .dessert), label: GGBodyLabel(textAlignment: .center, text: "Dessert"))
+        let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGSummaryWebLabel(textAlignment: .center, text: "Breakfast"))
+        let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGSummaryWebLabel(textAlignment: .center, text: "Main"))
+        let soupView = GGDietaryView(button: GGDietaryButton(mealType: .soup), label: GGSummaryWebLabel(textAlignment: .center, text: "Soup"))
+        let dessertView = GGDietaryView(button: GGDietaryButton(mealType: .dessert), label: GGSummaryWebLabel(textAlignment: .center, text: "Dessert"))
         mealTypeStackView.translatesAutoresizingMaskIntoConstraints = false
         mealTypeStackView.addArrangedSubviews(breakfastView, mainCourseView, soupView, dessertView)
         mealTypeStackView.distribution = .fillEqually
