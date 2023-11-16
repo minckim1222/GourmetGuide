@@ -45,7 +45,6 @@ class GGDiscoverViewController: UIViewController {
                 print(error)
             }
             dismissLoadingView()
-
         }
         
     }

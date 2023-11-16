@@ -10,6 +10,8 @@ import UIKit
 /// Button to select dietary options
 class GGDietaryButton: UIButton {
     
+    public var dietaryType: String = ""
+    public var dietaryValue: String = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +33,8 @@ class GGDietaryButton: UIButton {
         super.init(frame: .zero)
         let dietaryImage = UIImage(named: dietaryType.rawValue)
         self.setImage(dietaryImage, for: .normal)
+        self.dietaryType = "diet"
+        self.dietaryValue = dietaryType.rawValue
         configure()
     }
     
@@ -40,7 +44,11 @@ class GGDietaryButton: UIButton {
         super.init(frame: .zero)
         let mealTypeImage = UIImage(named: mealType.rawValue)
         self.setImage(mealTypeImage, for: .normal)
+        self.dietaryType = "meal"
+        self.dietaryValue = mealType.rawValue
+        configure()
     }
+    
 }
 
 

@@ -10,6 +10,8 @@ import Foundation
 /// Model for our API response
 struct GGResponseModel: Codable {
     
-    let recipes: [GGRecipe]
-    
+    let results: [GGRecipeResponse]
+    let offset: Int
+    let number: Int
+    let totalResults: Int
 }

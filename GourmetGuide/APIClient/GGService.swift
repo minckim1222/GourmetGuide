@@ -55,17 +55,57 @@ class GGService {
             }
             
             do {
-                
                 let json = try? JSONDecoder().decode(GGRandomRecipeResults.self, from: data)
                 guard let randomRecipes = json?.recipes else {
                     return
                 }
                 completed(.success(randomRecipes))
-                
             } catch {
                 completed(.failure(.failedToDecodeData))
             }
         }
         task.resume()
     }
+
+    public func getDietaryRecipes(from endpoint: GGEndpoint, withParameters parameters: [URLQueryItem] = [], completed: @escaping(Result<[GGRecipeResponse], GGServiceError>) -> Void){
+        
+        var endpointUrl = Constants.baseUrl + endpoint.rawValue
+        var components = URLComponents(string: endpointUrl)
+        var builtParameters = parameters
+        builtParameters.append(URLQueryItem(name: "apiKey", value: Constants.apiKey))
+        components?.queryItems = builtParameters
+        
+        guard let url = components?.url else {
+            completed(.failure(.invalidUrl))
+            return
+        }
+        print(url)
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.failedToCreateRequest))
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.failedToGetData))
+                return
+            }
+            print(data)
+            do {
+                let json = try? JSONDecoder().decode(GGResponseModel.self, from: data)
+                guard let recipes = json?.results else {
+                    return
+                }
+                completed(.success(recipes))
+            } catch {
+                completed(.failure(.failedToDecodeData))
+            }
+        }
+        task.resume()
+    }
+    
 }

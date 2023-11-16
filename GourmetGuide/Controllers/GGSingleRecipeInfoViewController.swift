@@ -19,6 +19,7 @@ class GGSingleRecipeInfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureScrollView()
+        print(recipe.summary)
     }
     
     private func configureScrollView(){
