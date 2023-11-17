@@ -129,7 +129,7 @@ class GGSearchViewController: UIViewController {
     @objc func actionButtonTapped(sender: GGDietaryButton){
         switch sender.dietaryType {
         case "meal":
-            let queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue)]
+            let queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue), URLQueryItem(name: "number", value: "1")]
             GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: queryParameters) { [weak self] result in
                 guard let self = self else { return }
                 switch result {

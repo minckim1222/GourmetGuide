@@ -120,8 +120,7 @@ extension GGDiscoverViewController: UICollectionViewDelegate {
         guard let item = dataSource?.itemIdentifier(for: indexPath) else {
             return
         }
-        let destinationVC = GGSingleRecipeInfoViewController()
-        destinationVC.recipe = item
+        let destinationVC = GGSingleRecipeInfoViewController(recipe: item)
         navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
