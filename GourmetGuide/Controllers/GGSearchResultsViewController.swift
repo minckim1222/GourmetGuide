@@ -13,7 +13,6 @@ class GGSearchResultsViewController: UIViewController {
     public var recipesArray: [GGRecipeResponse] = []
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipeResponse>?
-    public var dietaryType = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -140,7 +140,6 @@ class GGSearchViewController: UIViewController {
                     self.recipes = recipes
                     DispatchQueue.main.async {
                         let resultsVC = GGSearchResultsViewController()
-                        resultsVC.dietaryType = sender.dietaryValue
                         resultsVC.recipesArray = recipes
                         self.navigationController?.pushViewController(resultsVC, animated: true)
                     }
@@ -157,7 +156,6 @@ class GGSearchViewController: UIViewController {
                     self.recipes = recipes
                     DispatchQueue.main.async {
                         let resultsVC = GGSearchResultsViewController()
-                        resultsVC.dietaryType = sender.dietaryValue
                         resultsVC.recipesArray = recipes
                         self.navigationController?.pushViewController(resultsVC, animated: true)
                     }
