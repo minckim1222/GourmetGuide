@@ -4,11 +4,5 @@
         "type": "featured",
         "title": "",
         "subtitle": ""
-    },
-    {
-        "id": 2,
-        "type": "mediumTable",
-        "title": "Cuisines",
-        "subtitle": "Popular Cuisine Types"
     }
 ]
