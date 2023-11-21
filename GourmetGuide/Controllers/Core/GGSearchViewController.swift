@@ -17,7 +17,7 @@ class GGSearchViewController: UIViewController {
     // Views for StackViews
     private let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGDietaryLabel(textAlignment: .center, text: "Vegan"))
     private let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGDietaryLabel(textAlignment: .center, text: "No Meat"))
-    private let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGDietaryLabel(textAlignment: .center, text: "Keto"))
+    private let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGDietaryLabel(textAlignment: .center, text: "Meat Based"))
     private let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGDietaryLabel(textAlignment: .center, text: "No Gluten"))
     private let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGDietaryLabel(textAlignment: .center, text: "Breakfast"))
     private let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGDietaryLabel(textAlignment: .center, text: "Main"))
@@ -117,6 +117,7 @@ class GGSearchViewController: UIViewController {
         mealContainerStackView.spacing = 10
     }
     
+    /// Add target function to each button
     private func addTargetsToButtons(){
         let buttonArray = [
             veganView.button, vegetarianView.button, ketoView.button, glutenFreeView.button, mainCourseView.button, dessertView.button, soupView.button, breakfastView.button
@@ -126,28 +127,40 @@ class GGSearchViewController: UIViewController {
         }
     }
     
+    /// Function that makes an api call depending on what type of button was pressed
+    /// - Parameter sender: Button pressed of either dietaryType or mealType
     @objc func actionButtonTapped(sender: GGDietaryButton){
         switch sender.dietaryType {
         case "meal":
-            let queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue), URLQueryItem(name: "number", value: "1")]
+            let queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue), URLQueryItem(name: "number", value: "6")]
             GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: queryParameters) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let recipes):
                     self.recipes = recipes
-                    print(recipes[0])
+                    DispatchQueue.main.async {
+                        let resultsVC = GGSearchResultsViewController()
+                        resultsVC.dietaryType = sender.dietaryValue
+                        resultsVC.recipesArray = recipes
+                        self.navigationController?.pushViewController(resultsVC, animated: true)
+                    }
                 case .failure(let error):
                     print(error)
                 }
             }
         default:
-            let queryParameters = [URLQueryItem(name: "diet", value: sender.dietaryValue)]
+            let queryParameters = [URLQueryItem(name: "diet", value: sender.dietaryValue), URLQueryItem(name: "number", value: "6")]
             GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: queryParameters) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let recipes):
                     self.recipes = recipes
-                    print(recipes[0])
+                    DispatchQueue.main.async {
+                        let resultsVC = GGSearchResultsViewController()
+                        resultsVC.dietaryType = sender.dietaryValue
+                        resultsVC.recipesArray = recipes
+                        self.navigationController?.pushViewController(resultsVC, animated: true)
+                    }
                 case .failure(let error):
                     print(error)
                 }
@@ -155,6 +168,7 @@ class GGSearchViewController: UIViewController {
         }
     }
     
+    /// Configure all of the stackViews 
     private func configureStackViews(){
         configureDietaryStackView()
         configureDietaryContainer()

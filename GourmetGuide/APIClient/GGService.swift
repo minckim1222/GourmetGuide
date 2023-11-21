@@ -55,10 +55,9 @@ class GGService {
             }
             
             do {
-                let json = try? JSONDecoder().decode(GGRandomRecipeResults.self, from: data)
-                guard let randomRecipes = json?.recipes else {
-                    return
-                }
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(GGRandomRecipeResults.self, from: data)
+                let randomRecipes = json.recipes
                 completed(.success(randomRecipes))
             } catch {
                 completed(.failure(.failedToDecodeData))
@@ -66,10 +65,15 @@ class GGService {
         }
         task.resume()
     }
-
+    
+    /// Get recipes based on diet type
+    /// - Parameters:
+    ///   - endpoint: Endpoint for diet type
+    ///   - parameters: Any additional parameters
+    ///   - completed: Completion Handler
     public func getDietaryRecipes(from endpoint: GGEndpoint, withParameters parameters: [URLQueryItem] = [], completed: @escaping(Result<[GGRecipeResponse], GGServiceError>) -> Void){
         
-        var endpointUrl = Constants.baseUrl + endpoint.rawValue
+        let endpointUrl = Constants.baseUrl + endpoint.rawValue
         var components = URLComponents(string: endpointUrl)
         var builtParameters = parameters
         builtParameters.append(URLQueryItem(name: "apiKey", value: Constants.apiKey))
@@ -79,7 +83,7 @@ class GGService {
             completed(.failure(.invalidUrl))
             return
         }
-        print(url)
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
                 completed(.failure(.failedToCreateRequest))
@@ -96,10 +100,9 @@ class GGService {
             }
             print(data)
             do {
-                let json = try? JSONDecoder().decode(GGResponseModel.self, from: data)
-                guard let recipes = json?.results else {
-                    return
-                }
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(GGResponseModel.self, from: data)
+                let recipes = json.results
                 completed(.success(recipes))
             } catch {
                 completed(.failure(.failedToDecodeData))
@@ -108,4 +111,39 @@ class GGService {
         task.resume()
     }
     
+    
+    public func getSingleRecipe(from endpoint: GGEndpoint, with id: Int, completed: @escaping(Result<GGRecipe, GGServiceError>) -> Void){
+        
+        let endpointUrl = Constants.baseUrl + endpoint.rawValue + "\(id)/information?apiKey=\(Constants.apiKey)"
+        print(endpointUrl)
+        guard let url = URL(string: endpointUrl) else {
+            completed(.failure(.invalidUrl))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.failedToCreateRequest))
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.failedToGetData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let recipe = try decoder.decode(GGRecipe.self, from: data)
+                completed(.success(recipe))
+            } catch {
+                completed(.failure(.failedToDecodeData))
+            }
+        }
+        task.resume()
+    }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 extension String{
+    /// Converts our api call HTML into usable NSAttributedString
     func convertToHtml() -> NSAttributedString {
 
         guard let data = data(using: .utf8) else { return NSAttributedString() }

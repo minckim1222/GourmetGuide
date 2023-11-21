@@ -17,6 +17,7 @@
 		A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230942AE9873800881DFC /* GGDietaryView.swift */; };
 		A43230982AE9A37900881DFC /* GGResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230972AE9A37900881DFC /* GGResponseModel.swift */; };
 		A432309A2AE9A3C300881DFC /* GGRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230992AE9A3C300881DFC /* GGRecipe.swift */; };
+		A45153472B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */; };
 		A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5BC2B02C749008582F4 /* GGService.swift */; };
 		A49CB5C12B02CDE1008582F4 /* GGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */; };
 		A49CB5C32B02F021008582F4 /* GGRandomRecipeResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */; };
@@ -56,6 +57,7 @@
 		A43230942AE9873800881DFC /* GGDietaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietaryView.swift; sourceTree = "<group>"; };
 		A43230972AE9A37900881DFC /* GGResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGResponseModel.swift; sourceTree = "<group>"; };
 		A43230992AE9A3C300881DFC /* GGRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRecipe.swift; sourceTree = "<group>"; };
+		A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49CB5BC2B02C749008582F4 /* GGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGService.swift; sourceTree = "<group>"; };
 		A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGEndpoint.swift; sourceTree = "<group>"; };
 		A49CB5C22B02F021008582F4 /* GGRandomRecipeResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRandomRecipeResults.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */,
 				A4E2FFBB2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift */,
+				A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				A4F451F62AFAD35E00DF3ECA /* Decoder.swift in Sources */,
 				A4E2FFBC2AFB0100003177D4 /* GGFeaturedCollectionViewCell.swift in Sources */,
 				A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */,
+				A45153472B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift in Sources */,
 				A4DB89782B0566BE00EDDD4C /* String+EXT.swift in Sources */,
 				A406628F2AE97D01002560C5 /* GGMainTabBarController.swift in Sources */,
 				A49CB5C32B02F021008582F4 /* GGRandomRecipeResults.swift in Sources */,

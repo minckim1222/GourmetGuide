@@ -112,6 +112,7 @@ class GGDiscoverViewController: UIViewController {
 
 }
 
+/// Delegate method to open up single recipe controller for a tapped cell
 extension GGDiscoverViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

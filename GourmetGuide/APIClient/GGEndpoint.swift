@@ -10,4 +10,5 @@ import Foundation
 enum GGEndpoint : String {
     case randomRecipes = "recipes/random?"
     case dietaryRecipes = "recipes/complexSearch?"
+    case singleRecipe = "recipes/"
 }
