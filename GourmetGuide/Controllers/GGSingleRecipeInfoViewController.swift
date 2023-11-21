@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class GGSingleRecipeInfoViewController: UIViewController {
 
@@ -18,11 +19,13 @@ class GGSingleRecipeInfoViewController: UIViewController {
     private var vegan = false
     private var vegetarian = false
     private var glutenFree = false
-    private var dietaryStackView = UIStackView()
+    private var recipeInformationStackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        let visitUrlButton = UIBarButtonItem(title: "Visit URL", style: .plain, target: self, action: #selector(visitUrl))
+        navigationItem.rightBarButtonItem = visitUrlButton
         configureScrollView()
         configureDietaryLabels()
         print("Vegan: \(vegan)")
@@ -61,7 +64,7 @@ class GGSingleRecipeInfoViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        contentView.addSubviews(imageView, titleLabel, summaryLabel, dietaryStackView)
+        contentView.addSubviews(imageView, titleLabel, summaryLabel, recipeInformationStackView)
         configureImageView()
         configureTitleLabel()
         configureSummaryLabel()
@@ -97,10 +100,10 @@ class GGSingleRecipeInfoViewController: UIViewController {
     private func configureSummaryLabel(){
         summaryLabel.translatesAutoresizingMaskIntoConstraints = false
         summaryLabel.attributedText = recipe.summary.convertToHtml()
-        
+        summaryLabel.font = UIFont.preferredFont(forTextStyle: .body)
         summaryLabel.textColor = .label
         NSLayoutConstraint.activate([
-            summaryLabel.topAnchor.constraint(equalTo: dietaryStackView.bottomAnchor, constant: 25),
+            summaryLabel.topAnchor.constraint(equalTo: recipeInformationStackView.bottomAnchor, constant: 25),
             summaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             summaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             summaryLabel.heightAnchor.constraint(equalToConstant: 250),
@@ -112,34 +115,34 @@ class GGSingleRecipeInfoViewController: UIViewController {
     private func configureDietaryLabels(){
         if vegetarian {
             let view = GGDietaryView(button: .init(dietaryType: .vegetarian), label: .init(textAlignment: .center, text: "Vegetarian"))
-            dietaryStackView.addArrangedSubview(view)
+            recipeInformationStackView.addArrangedSubview(view)
         }
         if vegan {
             let view = GGDietaryView(button: .init(dietaryType: .vegan), label: .init(textAlignment: .center, text: "Vegan"))
-            dietaryStackView.addArrangedSubview(view)
+            recipeInformationStackView.addArrangedSubview(view)
         }
         if glutenFree {
             let view = GGDietaryView(button: .init(dietaryType: .glutenFree), label: .init(textAlignment: .center, text: "Gluten Free"))
-            dietaryStackView.addArrangedSubview(view)
+            recipeInformationStackView.addArrangedSubview(view)
         }
         if !vegan && !vegetarian {
             let view = GGDietaryView(button: .init(dietaryType: .keto), label: .init(textAlignment: .center, text: "Meat Based"))
-            dietaryStackView.addArrangedSubview(view)
+            recipeInformationStackView.addArrangedSubview(view)
         }
-        dietaryStackView.addArrangedSubview(UIView())
-        dietaryStackView.addArrangedSubview(UIView())
+        recipeInformationStackView.addArrangedSubview(UIView())
+        recipeInformationStackView.addArrangedSubview(UIView())
         
     }
     
     private func configureDietaryLabelStackView(){
-        dietaryStackView.translatesAutoresizingMaskIntoConstraints = false
-        dietaryStackView.distribution = .fillEqually
+        recipeInformationStackView.translatesAutoresizingMaskIntoConstraints = false
+        recipeInformationStackView.distribution = .fillEqually
 
         NSLayoutConstraint.activate([
-            dietaryStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 25),
-            dietaryStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            dietaryStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            dietaryStackView.heightAnchor.constraint(equalToConstant: 75)
+            recipeInformationStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 25),
+            recipeInformationStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            recipeInformationStackView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            recipeInformationStackView.heightAnchor.constraint(equalToConstant: 75)
         ])
                 
     }
@@ -150,6 +153,14 @@ class GGSingleRecipeInfoViewController: UIViewController {
         imageView.makeRounded()
         imageView.contentMode = .scaleAspectFill
         return imageView
+    }
+    
+    @objc func visitUrl(){
+        guard let url = URL(string: recipe.spoonacularSourceUrl) else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
     }
     
 }

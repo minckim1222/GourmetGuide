@@ -15,14 +15,14 @@ class GGSearchViewController: UIViewController {
     private let mealTypeHeaderView = GGTitleLabel(textAlignment: .left, text: "Search by Meal Type")
    
     // Views for StackViews
-    private let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGSummaryWebLabel(textAlignment: .center, text: "Vegan"))
-    private let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGSummaryWebLabel(textAlignment: .center, text: "No Meat"))
-    private let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGSummaryWebLabel(textAlignment: .center, text: "Keto"))
-    private let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGSummaryWebLabel(textAlignment: .center, text: "No Gluten"))
-    private let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGSummaryWebLabel(textAlignment: .center, text: "Breakfast"))
-    private let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGSummaryWebLabel(textAlignment: .center, text: "Main"))
-    private let soupView = GGDietaryView(button: GGDietaryButton(mealType: .soup), label: GGSummaryWebLabel(textAlignment: .center, text: "Soup"))
-    private let dessertView = GGDietaryView(button: GGDietaryButton(mealType: .dessert), label: GGSummaryWebLabel(textAlignment: .center, text: "Dessert"))
+    private let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGDietaryLabel(textAlignment: .center, text: "Vegan"))
+    private let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGDietaryLabel(textAlignment: .center, text: "No Meat"))
+    private let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGDietaryLabel(textAlignment: .center, text: "Keto"))
+    private let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGDietaryLabel(textAlignment: .center, text: "No Gluten"))
+    private let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGDietaryLabel(textAlignment: .center, text: "Breakfast"))
+    private let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGDietaryLabel(textAlignment: .center, text: "Main"))
+    private let soupView = GGDietaryView(button: GGDietaryButton(mealType: .soup), label: GGDietaryLabel(textAlignment: .center, text: "Soup"))
+    private let dessertView = GGDietaryView(button: GGDietaryButton(mealType: .dessert), label: GGDietaryLabel(textAlignment: .center, text: "Dessert"))
     
     // StackViews
     private let dietaryStackView = UIStackView()

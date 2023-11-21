@@ -8,7 +8,7 @@
 import UIKit
 
 /// UILabel for titles
-class GGSummaryWebLabel: UILabel {
+class GGDietaryLabel: UILabel {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

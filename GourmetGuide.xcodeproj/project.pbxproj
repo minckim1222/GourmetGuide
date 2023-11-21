@@ -35,7 +35,7 @@
 		A4F33EBC2AE88C9500778664 /* UIImageView+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */; };
 		A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */; };
 		A4F33EC22AE8C0CE00778664 /* GGTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */; };
-		A4F33EC42AE8C1EC00778664 /* GGSummaryWebLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC32AE8C1EC00778664 /* GGSummaryWebLabel.swift */; };
+		A4F33EC42AE8C1EC00778664 /* GGDietaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33EC32AE8C1EC00778664 /* GGDietaryLabel.swift */; };
 		A4F451E72AFAC3DD00DF3ECA /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */; };
 		A4F451ED2AFAC9E800DF3ECA /* GGDishType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */; };
 		A4F451EF2AFACAEE00DF3ECA /* GGDietType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */; };
@@ -74,7 +74,7 @@
 		A4F33EBB2AE88C9500778664 /* UIImageView+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+EXT.swift"; sourceTree = "<group>"; };
 		A4F33EBF2AE8BF7E00778664 /* AddSubviews+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddSubviews+EXT.swift"; sourceTree = "<group>"; };
 		A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGTitleLabel.swift; sourceTree = "<group>"; };
-		A4F33EC32AE8C1EC00778664 /* GGSummaryWebLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSummaryWebLabel.swift; sourceTree = "<group>"; };
+		A4F33EC32AE8C1EC00778664 /* GGDietaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietaryLabel.swift; sourceTree = "<group>"; };
 		A4F451E62AFAC3DD00DF3ECA /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDishType.swift; sourceTree = "<group>"; };
 		A4F451EE2AFACAEE00DF3ECA /* GGDietType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietType.swift; sourceTree = "<group>"; };
@@ -114,6 +114,15 @@
 				A4F451EC2AFAC9E800DF3ECA /* GGDishType.swift */,
 			);
 			path = DeitaryEnums;
+			sourceTree = "<group>";
+		};
+		A42A5E172B0C4D9C002292EC /* GGLabels */ = {
+			isa = PBXGroup;
+			children = (
+				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
+				A4F33EC32AE8C1EC00778664 /* GGDietaryLabel.swift */,
+			);
+			path = GGLabels;
 			sourceTree = "<group>";
 		};
 		A43230962AE993AB00881DFC /* GGDiscoverViews */ = {
@@ -180,9 +189,8 @@
 		A4F33EB62AE88A8E00778664 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A42A5E172B0C4D9C002292EC /* GGLabels */,
 				A43230962AE993AB00881DFC /* GGDiscoverViews */,
-				A4F33EC12AE8C0CE00778664 /* GGTitleLabel.swift */,
-				A4F33EC32AE8C1EC00778664 /* GGSummaryWebLabel.swift */,
 				A406628C2AE9733D002560C5 /* GGSearchTextField.swift */,
 			);
 			path = Views;
@@ -324,7 +332,7 @@
 				A4F451F22AFAD11100DF3ECA /* GGDiscoverSection.swift in Sources */,
 				A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */,
 				A42FD90B2B06CB1B009FF4B0 /* GGRecipeResponse.swift in Sources */,
-				A4F33EC42AE8C1EC00778664 /* GGSummaryWebLabel.swift in Sources */,
+				A4F33EC42AE8C1EC00778664 /* GGDietaryLabel.swift in Sources */,
 				A4F451F92AFADC9300DF3ECA /* GGCuisineType.swift in Sources */,
 				A40662932AE97D55002560C5 /* GGMyFridgeViewController.swift in Sources */,
 				A4F33EBA2AE88BAE00778664 /* GGDietaryButton.swift in Sources */,

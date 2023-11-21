@@ -10,9 +10,9 @@ import UIKit
 /// View that holds our dietary button + label
 class GGDietaryView: UIView {
 
-    let verticalStackView = UIStackView()
-    var button = GGDietaryButton()
-    var label = GGSummaryWebLabel()
+    private let verticalStackView = UIStackView()
+    public var button = GGDietaryButton()
+    public var label = GGDietaryLabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +24,7 @@ class GGDietaryView: UIView {
     }
     
     /// Initializer for dietary button
-    init(button: GGDietaryButton, label: GGSummaryWebLabel){
+    init(button: GGDietaryButton, label: GGDietaryLabel){
         super.init(frame: .zero)
         self.button = button
         self.label = label

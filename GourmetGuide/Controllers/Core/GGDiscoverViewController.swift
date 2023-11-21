@@ -14,7 +14,6 @@ class GGDiscoverViewController: UIViewController {
     var randomRecipesArray: [GGRecipe] = []
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipe>?
-    private var containerView = UIView()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
