@@ -13,6 +13,8 @@ class GGSearchResultsViewController: UIViewController {
     private var offset = 0
     public var passedThroughQueryParameters: [URLQueryItem] = []
     public var passedThroughType = ""
+    public var passedThroughQuery = ""
+    private var searchParameters: [URLQueryItem] = []
     private var showMoreRecipes = true
     private var parameters: [URLQueryItem] = []
     public var recipesArray: [GGRecipeResponse] = []
@@ -66,9 +68,13 @@ class GGSearchResultsViewController: UIViewController {
     }
     
     private func loadMoreData(withParameters parameters: [URLQueryItem]){
-        let parameters = [URLQueryItem(name: "type", value: passedThroughType), URLQueryItem(name: "offset", value: String(offset))]
-        print(parameters)
-        GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: parameters) { [weak self] result in
+        if !passedThroughType.isEmpty {
+            searchParameters = [URLQueryItem(name: "diet", value: passedThroughType), URLQueryItem(name: "offset", value: String(offset))]
+        } else if !passedThroughQuery.isEmpty {
+            searchParameters = [URLQueryItem(name: "query", value: passedThroughQuery), URLQueryItem(name: "offset", value: String(offset))]
+        }
+        print(searchParameters)
+        GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: searchParameters) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let recipes):

@@ -17,7 +17,7 @@ class GGSearchViewController: UIViewController {
     // Views for StackViews
     private let veganView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegan), label: GGDietaryLabel(textAlignment: .center, text: "Vegan"))
     private let vegetarianView = GGDietaryView(button: GGDietaryButton(dietaryType: .vegetarian), label: GGDietaryLabel(textAlignment: .center, text: "No Meat"))
-    private let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGDietaryLabel(textAlignment: .center, text: "Meat Based"))
+    private let ketoView = GGDietaryView(button: GGDietaryButton(dietaryType: .keto), label: GGDietaryLabel(textAlignment: .center, text: "Keto"))
     private let glutenFreeView = GGDietaryView(button: GGDietaryButton(dietaryType: .glutenFree), label: GGDietaryLabel(textAlignment: .center, text: "No Gluten"))
     private let breakfastView = GGDietaryView(button: GGDietaryButton(mealType: .breakfast), label: GGDietaryLabel(textAlignment: .center, text: "Breakfast"))
     private let mainCourseView = GGDietaryView(button: GGDietaryButton(mealType: .mainCourse), label: GGDietaryLabel(textAlignment: .center, text: "Main"))
@@ -38,6 +38,7 @@ class GGSearchViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Search"
         layoutUI()
+        createDismissTapGesture()
         configureStackViews()
         addTargetsToButtons()
         
@@ -47,7 +48,7 @@ class GGSearchViewController: UIViewController {
     private func layoutUI() {
         view.addSubviews(searchField,dietaryHeaderView, dietaryContainerStackView, mealTypeHeaderView, mealContainerStackView)
         let padding: CGFloat = 25
-        
+        searchField.delegate = self
         NSLayoutConstraint.activate([
             
             searchField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: (padding)),
@@ -131,7 +132,7 @@ class GGSearchViewController: UIViewController {
     /// - Parameter sender: Button pressed of either dietaryType or mealType
     @objc func actionButtonTapped(sender: GGDietaryButton){
 
-        var queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue)]
+        let queryParameters = [URLQueryItem(name: "diet", value: sender.dietaryValue)]
         let resultsVC = GGSearchResultsViewController()
         resultsVC.passedThroughQueryParameters = queryParameters
         resultsVC.passedThroughType = sender.dietaryValue
@@ -145,5 +146,30 @@ class GGSearchViewController: UIViewController {
         configureMealTypeStackView()
         configureMealTypeContainer()
     }
+    
+    /// Function to add tap dismissal on search screen
+    private func createDismissTapGesture(){
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+    }
+    
+    /// Search function to get search field's text and query the API for recipes
+    private func getRecipesFor(){
+        guard let query = searchField.text else {
+            return
+        }
+        let queryParameters = [URLQueryItem(name: "query", value: query)]
+        let destinationVC = GGSearchResultsViewController()
+        destinationVC.passedThroughQueryParameters = queryParameters
+        destinationVC.passedThroughQuery = query
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+    }
 }
 
+extension GGSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        getRecipesFor()
+        searchField.text = ""
+        return true
+    }
+}

@@ -125,10 +125,6 @@ class GGSingleRecipeInfoViewController: UIViewController {
             let view = GGDietaryView(button: .init(dietaryType: .glutenFree), label: .init(textAlignment: .center, text: "Gluten Free"))
             recipeInformationStackView.addArrangedSubview(view)
         }
-        if !vegan && !vegetarian {
-            let view = GGDietaryView(button: .init(dietaryType: .keto), label: .init(textAlignment: .center, text: "Meat Based"))
-            recipeInformationStackView.addArrangedSubview(view)
-        }
         recipeInformationStackView.addArrangedSubview(UIView())
         recipeInformationStackView.addArrangedSubview(UIView())
         

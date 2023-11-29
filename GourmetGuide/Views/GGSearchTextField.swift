@@ -33,6 +33,7 @@ class GGSearchTextField: UITextField {
         adjustsFontSizeToFitWidth = true
         autocorrectionType = .yes
         placeholder = "Search recipes"
+        returnKeyType = .search
     }
     
 }
