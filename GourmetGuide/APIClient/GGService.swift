@@ -112,6 +112,11 @@ class GGService {
     }
     
     
+    /// Get information for a single recipe
+    /// - Parameters:
+    ///   - endpoint: Single recipe endpoind
+    ///   - id: Id of the recipe to search
+    ///   - completed: Completion handler that returns the single recipe
     public func getSingleRecipe(from endpoint: GGEndpoint, with id: Int, completed: @escaping(Result<GGRecipe, GGServiceError>) -> Void){
         
         let endpointUrl = Constants.baseUrl + endpoint.rawValue + "\(id)/information?apiKey=\(Constants.apiKey)"

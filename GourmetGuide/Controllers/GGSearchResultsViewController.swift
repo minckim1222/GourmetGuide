@@ -9,7 +9,12 @@ import UIKit
 
 class GGSearchResultsViewController: UIViewController {
     
-    let sections = Bundle.main.decode([GGDiscoverSection].self, from: "GGDiscoverSection.json")
+    private let sections = Bundle.main.decode([GGDiscoverSection].self, from: "GGDiscoverSection.json")
+    private var offset = 0
+    public var passedThroughQueryParameters: [URLQueryItem] = []
+    public var passedThroughType = ""
+    private var showMoreRecipes = true
+    private var parameters: [URLQueryItem] = []
     public var recipesArray: [GGRecipeResponse] = []
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipeResponse>?
@@ -20,6 +25,7 @@ class GGSearchResultsViewController: UIViewController {
         title = "Search Results"
         configureCollectionView()
         createDataSource()
+        loadInitialData(withParameters: passedThroughQueryParameters)
         reloadData()
     }
     
@@ -44,7 +50,39 @@ class GGSearchResultsViewController: UIViewController {
             }
         })
     }
-//    
+    //MARK: CollectionView data
+    
+    private func loadInitialData(withParameters parameters: [URLQueryItem]){
+        GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: parameters) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let recipes):
+                self.recipesArray.append(contentsOf: recipes)
+                self.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func loadMoreData(withParameters parameters: [URLQueryItem]){
+        let parameters = [URLQueryItem(name: "type", value: passedThroughType), URLQueryItem(name: "offset", value: String(offset))]
+        print(parameters)
+        GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: parameters) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let recipes):
+                if recipes.count < 10 {
+                    showMoreRecipes = false
+                }
+                self.recipesArray.append(contentsOf: recipes)
+                self.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     private func reloadData(){
         var snapshot = NSDiffableDataSourceSnapshot<GGDiscoverSection, GGRecipeResponse>()
         snapshot.appendSections(sections)
@@ -98,5 +136,17 @@ extension GGSearchResultsViewController: UICollectionViewDelegate {
                 print(error)
             }
         }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        if offsetY > contentHeight - height {
+            guard showMoreRecipes else { return }
+            offset += 10
+            loadMoreData(withParameters: parameters)
+        }
+        
     }
 }

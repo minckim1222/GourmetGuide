@@ -130,40 +130,12 @@ class GGSearchViewController: UIViewController {
     /// Function that makes an api call depending on what type of button was pressed
     /// - Parameter sender: Button pressed of either dietaryType or mealType
     @objc func actionButtonTapped(sender: GGDietaryButton){
-        switch sender.dietaryType {
-        case "meal":
-            let queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue), URLQueryItem(name: "number", value: "6")]
-            GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: queryParameters) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let recipes):
-                    self.recipes = recipes
-                    DispatchQueue.main.async {
-                        let resultsVC = GGSearchResultsViewController()
-                        resultsVC.recipesArray = recipes
-                        self.navigationController?.pushViewController(resultsVC, animated: true)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        default:
-            let queryParameters = [URLQueryItem(name: "diet", value: sender.dietaryValue), URLQueryItem(name: "number", value: "6")]
-            GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: queryParameters) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let recipes):
-                    self.recipes = recipes
-                    DispatchQueue.main.async {
-                        let resultsVC = GGSearchResultsViewController()
-                        resultsVC.recipesArray = recipes
-                        self.navigationController?.pushViewController(resultsVC, animated: true)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+
+        var queryParameters = [URLQueryItem(name: "type", value: sender.dietaryValue)]
+        let resultsVC = GGSearchResultsViewController()
+        resultsVC.passedThroughQueryParameters = queryParameters
+        resultsVC.passedThroughType = sender.dietaryValue
+        self.navigationController?.pushViewController(resultsVC, animated: true)
     }
     
     /// Configure all of the stackViews 
