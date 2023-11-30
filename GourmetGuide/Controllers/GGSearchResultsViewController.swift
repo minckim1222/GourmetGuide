@@ -17,9 +17,9 @@ class GGSearchResultsViewController: UIViewController {
     private var searchParameters: [URLQueryItem] = []
     private var showMoreRecipes = true
     private var parameters: [URLQueryItem] = []
-    public var recipesArray: [GGRecipeResponse] = []
+    public var recipesArray: [GGSingleRecipeResponse] = []
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipeResponse>?
+    private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGSingleRecipeResponse>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class GGSearchResultsViewController: UIViewController {
     }
     
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipeResponse>(collectionView: collectionView, cellProvider: { collectionView, indexPath, recipe in
+        dataSource = UICollectionViewDiffableDataSource<GGDiscoverSection, GGSingleRecipeResponse>(collectionView: collectionView, cellProvider: { collectionView, indexPath, recipe in
             switch self.sections[indexPath.section].type {
             default:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GGSearchResultCollectionViewCell.reuseIdentifier, for: indexPath) as? GGSearchResultCollectionViewCell else {
@@ -90,7 +90,7 @@ class GGSearchResultsViewController: UIViewController {
     }
     
     private func reloadData(){
-        var snapshot = NSDiffableDataSourceSnapshot<GGDiscoverSection, GGRecipeResponse>()
+        var snapshot = NSDiffableDataSourceSnapshot<GGDiscoverSection, GGSingleRecipeResponse>()
         snapshot.appendSections(sections)
         snapshot.appendItems(recipesArray)
         DispatchQueue.main.async{

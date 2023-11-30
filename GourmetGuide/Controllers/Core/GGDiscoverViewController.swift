@@ -10,8 +10,8 @@ import UIKit
 /// Discovery controller with collectionView
 class GGDiscoverViewController: UIViewController {
     
-    let sections = Bundle.main.decode([GGDiscoverSection].self, from: "GGDiscoverSection.json")
-    var randomRecipesArray: [GGRecipe] = []
+    private let sections = Bundle.main.decode([GGDiscoverSection].self, from: "GGDiscoverSection.json")
+    private var randomRecipesArray: [GGRecipe] = []
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<GGDiscoverSection, GGRecipe>?
     
@@ -54,11 +54,14 @@ class GGDiscoverViewController: UIViewController {
     ///   - recipe: The recipe object to configure the cell with
     ///   - indexPath: IndexPath
     /// - Returns: A configured cell used for queueing
-    private func configure<T: SelfConfiguringCell>(_ cellType: T.Type, with recipe: GGRecipe, for indexPath: IndexPath) -> T {
+    private func configure<T: SelfConfiguringCell>(_ cellType: T.Type, with model: AnyHashable, for indexPath: IndexPath) -> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Unable to dequeue cell of type \(cellType)")
         }
-        cell.configure(with: recipe)
+        guard let model = model as? GGRecipe else {
+            fatalError()
+        }
+        cell.configure(with: model)
         return cell
     }
     

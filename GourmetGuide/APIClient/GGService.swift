@@ -56,7 +56,7 @@ class GGService {
             
             do {
                 let decoder = JSONDecoder()
-                let json = try decoder.decode(GGRandomRecipeResults.self, from: data)
+                let json = try decoder.decode(GGRandomRecipeResponse.self, from: data)
                 let randomRecipes = json.recipes
                 completed(.success(randomRecipes))
             } catch {
@@ -71,7 +71,7 @@ class GGService {
     ///   - endpoint: Endpoint for diet type
     ///   - parameters: Any additional parameters
     ///   - completed: Completion Handler
-    public func getDietaryRecipes(from endpoint: GGEndpoint, withParameters parameters: [URLQueryItem] = [], completed: @escaping(Result<[GGRecipeResponse], GGServiceError>) -> Void){
+    public func getDietaryRecipes(from endpoint: GGEndpoint, withParameters parameters: [URLQueryItem] = [], completed: @escaping(Result<[GGSingleRecipeResponse], GGServiceError>) -> Void){
         
         let endpointUrl = Constants.baseUrl + endpoint.rawValue
         var components = URLComponents(string: endpointUrl)

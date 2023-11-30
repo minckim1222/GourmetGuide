@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct GGRecipeResponse: Codable, Hashable {
+/// Response model for Single recipe from API Call
+struct GGSingleRecipeResponse: Codable, Hashable {
     let id: Int
     let title: String
     let image: String

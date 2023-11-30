@@ -59,7 +59,7 @@ class GGSearchResultCollectionViewCell: UICollectionViewCell {
 
         /// Public func to configure our app
         /// - Parameter recipe: Recipe object to configure with
-        public func configure(with recipe: GGRecipeResponse) {
+        public func configure(with recipe: GGSingleRecipeResponse) {
             recipeName.text = recipe.title
             recipeImage.downloadImage(from: recipe.image)
         }

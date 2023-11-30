@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct GGRandomRecipeResults: Codable {
+/// Response model for random recipe api call
+struct GGRandomRecipeResponse: Codable {
     let recipes: [GGRecipe]
 }

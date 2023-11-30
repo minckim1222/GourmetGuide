@@ -31,7 +31,7 @@ class GGSearchViewController: UIViewController {
     private let mealContainerStackView = UIStackView()
     
     // Recipes from API call
-    private var recipes: [GGRecipeResponse] = []
+    private var recipes: [GGSingleRecipeResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
