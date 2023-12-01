@@ -11,4 +11,5 @@ import Foundation
 struct GGIngredient: Codable, Hashable {
     let ingredient: String
     let id: Int
+    var saved: Bool
 }

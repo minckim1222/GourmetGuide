@@ -17,12 +17,12 @@
 		A43230952AE9873800881DFC /* GGDietaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230942AE9873800881DFC /* GGDietaryView.swift */; };
 		A43230982AE9A37900881DFC /* GGResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230972AE9A37900881DFC /* GGResponseModel.swift */; };
 		A432309A2AE9A3C300881DFC /* GGRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43230992AE9A3C300881DFC /* GGRecipe.swift */; };
-		A44DFC752B1927BF006F63FA /* GGIngredients.json in Resources */ = {isa = PBXBuildFile; fileRef = A44DFC742B1927BF006F63FA /* GGIngredients.json */; };
 		A44DFC772B192806006F63FA /* GGIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44DFC762B192806006F63FA /* GGIngredient.swift */; };
 		A45153472B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */; };
 		A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5BC2B02C749008582F4 /* GGService.swift */; };
 		A49CB5C12B02CDE1008582F4 /* GGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */; };
 		A49CB5C32B02F021008582F4 /* GGRandomRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C22B02F021008582F4 /* GGRandomRecipeResponse.swift */; };
+		A4C26D972B1A611100AEC02E /* GGIngredients.json in Resources */ = {isa = PBXBuildFile; fileRef = A4C26D962B1A611100AEC02E /* GGIngredients.json */; };
 		A4C989C82B0402CE001341CD /* UIViewController+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C989C72B0402CE001341CD /* UIViewController+EXT.swift */; };
 		A4C989CD2B041409001341CD /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A4C989CC2B041409001341CD /* SDWebImage */; };
 		A4C989CF2B041409001341CD /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4C989CE2B041409001341CD /* SDWebImageMapKit */; };
@@ -59,12 +59,12 @@
 		A43230942AE9873800881DFC /* GGDietaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGDietaryView.swift; sourceTree = "<group>"; };
 		A43230972AE9A37900881DFC /* GGResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGResponseModel.swift; sourceTree = "<group>"; };
 		A43230992AE9A3C300881DFC /* GGRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRecipe.swift; sourceTree = "<group>"; };
-		A44DFC742B1927BF006F63FA /* GGIngredients.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GGIngredients.json; sourceTree = "<group>"; };
 		A44DFC762B192806006F63FA /* GGIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGIngredient.swift; sourceTree = "<group>"; };
 		A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49CB5BC2B02C749008582F4 /* GGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGService.swift; sourceTree = "<group>"; };
 		A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGEndpoint.swift; sourceTree = "<group>"; };
 		A49CB5C22B02F021008582F4 /* GGRandomRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRandomRecipeResponse.swift; sourceTree = "<group>"; };
+		A4C26D962B1A611100AEC02E /* GGIngredients.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GGIngredients.json; sourceTree = "<group>"; };
 		A4C989C72B0402CE001341CD /* UIViewController+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EXT.swift"; sourceTree = "<group>"; };
 		A4C989D02B041547001341CD /* GGSingleRecipeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSingleRecipeInfoViewController.swift; sourceTree = "<group>"; };
 		A4DB89772B0566BE00EDDD4C /* String+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EXT.swift"; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 			children = (
 				A4C989C62B03FFF8001341CD /* Extensions */,
 				A4F451F32AFAD29400DF3ECA /* GGDiscoverSection.json */,
-				A44DFC742B1927BF006F63FA /* GGIngredients.json */,
+				A4C26D962B1A611100AEC02E /* GGIngredients.json */,
 				A4F451F52AFAD35E00DF3ECA /* Decoder.swift */,
 				A4F33EB72AE88A9400778664 /* Models */,
 			);
@@ -325,7 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A44DFC752B1927BF006F63FA /* GGIngredients.json in Resources */,
+				A4C26D972B1A611100AEC02E /* GGIngredients.json in Resources */,
 				A4F451F72AFAD38A00DF3ECA /* GGDiscoverSection.json in Resources */,
 				A4F33EAE2AE8891600778664 /* LaunchScreen.storyboard in Resources */,
 				A4F33EAB2AE8891600778664 /* Assets.xcassets in Resources */,
