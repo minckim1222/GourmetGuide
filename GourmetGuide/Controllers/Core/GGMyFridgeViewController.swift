@@ -10,20 +10,31 @@ import UIKit
 class GGMyFridgeViewController: UIViewController {
 
     private let ingredients = Bundle.main.decode([GGIngredient].self, from: "GGIngredients.json")
-    private var ingredientToInsertBefore: GGIngredient?
+    
     private let ingredientTableView = UITableView()
     private let savedIngredientTableView = UITableView()
     private var savedIngredients: [GGIngredient] = []
+    private var filteredIngredients: [GGIngredient] = []
     private var ingredientDataSource: UITableViewDiffableDataSource<GGIngredientSection, GGIngredient>?
     private var savedIngredientDataSource: UITableViewDiffableDataSource<GGIngredientSection, GGIngredient>?
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setUpTableview()
+        configureSearchController()
         configureIngredientDataSource()
         configureSavedIngredientDataSource()
-        reloadIngredientDataSource()
-        reloadSavedIngredientDataSource()
+        reloadIngredientDataSource(with: ingredients)
+        reloadSavedIngredientDataSource(with: savedIngredients)
+    }
+    
+    private func configureSearchController(){
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search for an ingredient"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func setUpTableview(){
@@ -60,14 +71,14 @@ class GGMyFridgeViewController: UIViewController {
         })
     }
     
-    private func reloadIngredientDataSource(){
+    private func reloadIngredientDataSource(with ingredients: [GGIngredient]){
         var snapshot = NSDiffableDataSourceSnapshot<GGIngredientSection, GGIngredient>()
         snapshot.appendSections([.availableIngredients])
         snapshot.appendItems(ingredients, toSection: .availableIngredients)
         ingredientDataSource?.apply(snapshot)
     }
     
-    private func reloadSavedIngredientDataSource(){
+    private func reloadSavedIngredientDataSource(with ingredients: [GGIngredient]){
         var snapshot = NSDiffableDataSourceSnapshot<GGIngredientSection, GGIngredient>()
         snapshot.appendSections([.myIngredients])
         snapshot.appendItems(savedIngredients, toSection: .myIngredients)
@@ -88,29 +99,23 @@ class GGIngredientDataSource: UITableViewDiffableDataSource<GGIngredientSection,
     }
 }
 
+/// Tableview protocol stubs for tapping on cells
 extension GGMyFridgeViewController: UITableViewDelegate {
     
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch tableView {
         case ingredientTableView:
             guard let currentIngredient = ingredientDataSource?.itemIdentifier(for: indexPath) else {
                 return
             }
             
-            guard let currentIngredientIndex = ingredients.firstIndex(of: currentIngredient) else {
-                return
-            }
-            let nextIngredient = ingredients[currentIngredientIndex + 1]
-            ingredientToInsertBefore = nextIngredient
             guard var ingredientSnapshot = ingredientDataSource?.snapshot() else {
                 return
             }
             guard var savedIngredientSnapshot = savedIngredientDataSource?.snapshot() else {
                 return
             }
+            savedIngredients.append(currentIngredient)
             savedIngredientSnapshot.appendItems([currentIngredient])
             ingredientSnapshot.deleteItems([currentIngredient])
             ingredientDataSource?.apply(ingredientSnapshot, animatingDifferences: true)
@@ -125,13 +130,29 @@ extension GGMyFridgeViewController: UITableViewDelegate {
             guard var availableIngredientSnapshot = ingredientDataSource?.snapshot() else {
                 return
             }
-            
+            if let index = savedIngredients.firstIndex(of: savedIngredient) {
+                savedIngredients.remove(at: index)
+            }
             savedIngredientSnapshot.deleteItems([savedIngredient])
-            availableIngredientSnapshot.insertItems([savedIngredient], beforeItem: ingredientToInsertBefore!)
+            availableIngredientSnapshot.appendItems([savedIngredient])
             ingredientDataSource?.apply(availableIngredientSnapshot, animatingDifferences: true)
             savedIngredientDataSource?.apply(savedIngredientSnapshot, animatingDifferences: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension GGMyFridgeViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filteredItems = searchController.searchBar.text, !filteredItems.isEmpty else { return }
+        filteredIngredients = ingredients.filter({ $0.ingredient.lowercased().contains(filteredItems.lowercased()) })
+        reloadIngredientDataSource(with: filteredIngredients)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        savedIngredients.removeAll()
+        reloadIngredientDataSource(with: ingredients)
+        reloadSavedIngredientDataSource(with: savedIngredients)
     }
 }
 
