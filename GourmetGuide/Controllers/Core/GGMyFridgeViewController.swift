@@ -10,7 +10,7 @@ import UIKit
 class GGMyFridgeViewController: UIViewController {
 
     private let ingredients = Bundle.main.decode([GGIngredient].self, from: "GGIngredients.json")
-    
+    private var ingredientToInsertBefore: GGIngredient?
     private let ingredientTableView = UITableView()
     private let savedIngredientTableView = UITableView()
     private var savedIngredients: [GGIngredient] = []
@@ -27,7 +27,7 @@ class GGMyFridgeViewController: UIViewController {
     }
     
     private func setUpTableview(){
-        ingredientTableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 500)
+        ingredientTableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 375)
         view.addSubview(ingredientTableView)
         view.addSubview(savedIngredientTableView)
         savedIngredientTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,8 +39,7 @@ class GGMyFridgeViewController: UIViewController {
             savedIngredientTableView.topAnchor.constraint(equalTo: ingredientTableView.bottomAnchor, constant: 15),
             savedIngredientTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             savedIngredientTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            savedIngredientTableView.heightAnchor.constraint(equalToConstant: 500),
-            savedIngredientTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            savedIngredientTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 60)
         ])
         
     }
@@ -91,52 +90,52 @@ class GGIngredientDataSource: UITableViewDiffableDataSource<GGIngredientSection,
 
 extension GGMyFridgeViewController: UITableViewDelegate {
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         switch tableView {
         case ingredientTableView:
             guard let currentIngredient = ingredientDataSource?.itemIdentifier(for: indexPath) else {
                 return
             }
             
+            guard let currentIngredientIndex = ingredients.firstIndex(of: currentIngredient) else {
+                return
+            }
+            let nextIngredient = ingredients[currentIngredientIndex + 1]
+            ingredientToInsertBefore = nextIngredient
             guard var ingredientSnapshot = ingredientDataSource?.snapshot() else {
                 return
             }
             guard var savedIngredientSnapshot = savedIngredientDataSource?.snapshot() else {
                 return
             }
-            savedIngredients.append(currentIngredient)
             savedIngredientSnapshot.appendItems([currentIngredient])
             ingredientSnapshot.deleteItems([currentIngredient])
-            ingredientDataSource?.apply(ingredientSnapshot)
-            savedIngredientDataSource?.apply(savedIngredientSnapshot)
+            ingredientDataSource?.apply(ingredientSnapshot, animatingDifferences: true)
+            savedIngredientDataSource?.apply(savedIngredientSnapshot, animatingDifferences: true)
         default:
-            print("saved")
+            guard let savedIngredient = savedIngredientDataSource?.itemIdentifier(for: indexPath) else {
+                return
+            }
+            guard var savedIngredientSnapshot = savedIngredientDataSource?.snapshot() else {
+                return
+            }
+            guard var availableIngredientSnapshot = ingredientDataSource?.snapshot() else {
+                return
+            }
+            
+            savedIngredientSnapshot.deleteItems([savedIngredient])
+            availableIngredientSnapshot.insertItems([savedIngredient], beforeItem: ingredientToInsertBefore!)
+            ingredientDataSource?.apply(availableIngredientSnapshot, animatingDifferences: true)
+            savedIngredientDataSource?.apply(savedIngredientSnapshot, animatingDifferences: true)
         }
-        
-//        snapshot.deleteItems([currentIngredient])
-//        if !savedIngredients.contains(currentIngredient){
-//            savedIngredients.append(currentIngredient)
-//            snapshot.appendItems([currentIngredient], toSection: .myIngredients)
-//        } else {
-//            if let index = savedIngredients.firstIndex(of: currentIngredient) {
-//                savedIngredients.remove(at: index)
-//            }
-//            snapshot.appendItems([currentIngredient], toSection: .availableIngredients)
-//        }
-//        print(savedIngredients)
-//        ingredientDataSource?.apply(snapshot)
-//        let cell = tableView.cellForRow(at: indexPath)
-//        if cell?.accessoryType == UITableViewCell.AccessoryType.none {
-//            cell?.accessoryType = .checkmark
-//            savedIngredients.append(ingredient)
-//        } else {
-//            cell?.accessoryType = .none
-//        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-enum GGIngredientSection: CaseIterable {
+enum GGIngredientSection {
     case availableIngredients
     case myIngredients
     
