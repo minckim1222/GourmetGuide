@@ -20,6 +20,7 @@
 		A44DFC772B192806006F63FA /* GGIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44DFC762B192806006F63FA /* GGIngredient.swift */; };
 		A45153472B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */; };
 		A45F86D12B20E6740080AB72 /* GGAvailableIngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F86D02B20E6740080AB72 /* GGAvailableIngredientsViewController.swift */; };
+		A45F86D32B2110200080AB72 /* GGIngredientsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F86D22B2110200080AB72 /* GGIngredientsResponseModel.swift */; };
 		A49CB5BD2B02C749008582F4 /* GGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5BC2B02C749008582F4 /* GGService.swift */; };
 		A49CB5C12B02CDE1008582F4 /* GGEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */; };
 		A49CB5C32B02F021008582F4 /* GGRandomRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49CB5C22B02F021008582F4 /* GGRandomRecipeResponse.swift */; };
@@ -63,6 +64,7 @@
 		A44DFC762B192806006F63FA /* GGIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGIngredient.swift; sourceTree = "<group>"; };
 		A45153462B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGSearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		A45F86D02B20E6740080AB72 /* GGAvailableIngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGAvailableIngredientsViewController.swift; sourceTree = "<group>"; };
+		A45F86D22B2110200080AB72 /* GGIngredientsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGIngredientsResponseModel.swift; sourceTree = "<group>"; };
 		A49CB5BC2B02C749008582F4 /* GGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGService.swift; sourceTree = "<group>"; };
 		A49CB5C02B02CDE1008582F4 /* GGEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGEndpoint.swift; sourceTree = "<group>"; };
 		A49CB5C22B02F021008582F4 /* GGRandomRecipeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGRandomRecipeResponse.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				A4F451F12AFAD11100DF3ECA /* GGDiscoverSection.swift */,
 				A49CB5C22B02F021008582F4 /* GGRandomRecipeResponse.swift */,
 				A44DFC762B192806006F63FA /* GGIngredient.swift */,
+				A45F86D22B2110200080AB72 /* GGIngredientsResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				A4F33EC02AE8BF7E00778664 /* AddSubviews+EXT.swift in Sources */,
 				A4F451EF2AFACAEE00DF3ECA /* GGDietType.swift in Sources */,
 				A4F33EA42AE8891500778664 /* SceneDelegate.swift in Sources */,
+				A45F86D32B2110200080AB72 /* GGIngredientsResponseModel.swift in Sources */,
 				A432309A2AE9A3C300881DFC /* GGRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

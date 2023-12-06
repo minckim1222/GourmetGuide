@@ -68,18 +68,24 @@ class GGAvailableIngredientsViewController: UIViewController {
     
 }
 
+
+
 //MARK: TableView Delegate Functions
 extension GGAvailableIngredientsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedIngredient = datasource?.itemIdentifier(for: indexPath) else {
             return
         }
-        if let index = availableIngredients.firstIndex(of: selectedIngredient) {
-            availableIngredients.remove(at: index)
-        }
+//        if let index = availableIngredients.firstIndex(of: selectedIngredient) {
+//            availableIngredients.remove(at: index)
+//        }
+
         delegate?.addedIngredient(ingredient: selectedIngredient)
-        reloadData(with: availableIngredients)
-        tableView.deselectRow(at: indexPath, animated: true)
+        if var snapshot = self.datasource?.snapshot() {
+            snapshot.deleteItems([selectedIngredient])
+            datasource?.apply(snapshot)
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 

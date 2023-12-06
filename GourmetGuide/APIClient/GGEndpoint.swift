@@ -11,4 +11,5 @@ enum GGEndpoint : String {
     case randomRecipes = "recipes/random?"
     case dietaryRecipes = "recipes/complexSearch?"
     case singleRecipe = "recipes/"
+    case withIngredients = "recipes/findByIngredients?"
 }

@@ -151,4 +151,56 @@ class GGService {
         }
         task.resume()
     }
+    
+    //Function to search API with our ingredients to find recipes
+    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], completed: @escaping(Result<[GGSingleRecipeResponse], GGServiceError>) -> Void){
+        let endpointUrl = Constants.baseUrl + endpoint.rawValue
+        var components = URLComponents(string: endpointUrl)
+        let apiKey = URLQueryItem(name: "apiKey", value: Constants.apiKey)
+        var queryItems = ""
+        for ingredient in ingredients {
+            queryItems += "\(ingredient),"
+        }
+//        let decodedQueryItems = queryItems.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let decodedQueryItem = URLQueryItem(name: "ingredients", value: queryItems)
+        print(decodedQueryItem)
+        let number = URLQueryItem(name: "number", value: String(1))
+        components?.queryItems = [number, apiKey, decodedQueryItem]
+        
+        guard let url = components?.url else {
+            completed(.failure(.invalidUrl))
+            return
+        }
+        print(url)
+        guard let url = URL(string: endpointUrl) else {
+            completed(.failure(.invalidUrl))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.failedToCreateRequest))
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.failedToGetData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let json = try decoder.decode(GGIngredientsResponseModel.self, from: data)
+                let recipes = json.results
+                completed(.success(recipes))
+            } catch {
+                completed(.failure(.failedToDecodeData))
+            }
+        }
+        task.resume()
+    }
 }
