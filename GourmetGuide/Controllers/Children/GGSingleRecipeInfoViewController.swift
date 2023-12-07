@@ -28,9 +28,6 @@ class GGSingleRecipeInfoViewController: UIViewController {
         navigationItem.rightBarButtonItem = visitUrlButton
         configureScrollView()
         configureDietaryLabels()
-        print("Vegan: \(vegan)")
-        print("Vegetaria: \(vegetarian)")
-        print("GlutenFree: \(glutenFree)")
     }
     
     init(recipe: GGRecipe){

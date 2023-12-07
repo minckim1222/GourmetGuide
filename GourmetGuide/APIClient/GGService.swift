@@ -153,21 +153,27 @@ class GGService {
     }
     
     //Function to search API with our ingredients to find recipes
-    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], completed: @escaping(Result<[GGSingleRecipeResponse], GGServiceError>) -> Void){
-        let endpointUrl = Constants.baseUrl + endpoint.rawValue
-        var components = URLComponents(string: endpointUrl)
-        let apiKey = URLQueryItem(name: "apiKey", value: Constants.apiKey)
+    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], completed: @escaping(Result<[GGIngredientResponse], GGServiceError>) -> Void){
+        var endpointUrl = Constants.baseUrl + endpoint.rawValue
+//        var components = URLComponents(string: endpointUrl)
+//        let apiKey = URLQueryItem(name: "apiKey", value: Constants.apiKey)
         var queryItems = ""
         for ingredient in ingredients {
             queryItems += "\(ingredient),"
         }
-//        let decodedQueryItems = queryItems.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let decodedQueryItem = URLQueryItem(name: "ingredients", value: queryItems)
-        print(decodedQueryItem)
-        let number = URLQueryItem(name: "number", value: String(1))
-        components?.queryItems = [number, apiKey, decodedQueryItem]
+        print(queryItems)
+        guard let decodedQueryItems = queryItems.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+        print(decodedQueryItems)
+        endpointUrl += "ingredients=\(decodedQueryItems)&apiKey=\(Constants.apiKey)&number=1"
+        print(endpointUrl)
+//        let decodedQueryItem = URLQueryItem(name: "ingredients", value: queryItems)
+//        print(decodedQueryItem)
+//        let number = URLQueryItem(name: "number", value: String(1))
+//        components?.queryItems = [number, apiKey, decodedQueryItem]
         
-        guard let url = components?.url else {
+        guard let url = URL(string: endpointUrl) else {
             completed(.failure(.invalidUrl))
             return
         }
@@ -194,8 +200,7 @@ class GGService {
             
             do {
                 let decoder = JSONDecoder()
-                let json = try decoder.decode(GGIngredientsResponseModel.self, from: data)
-                let recipes = json.results
+                let recipes = try decoder.decode([GGIngredientResponse].self, from: data)
                 completed(.success(recipes))
             } catch {
                 completed(.failure(.failedToDecodeData))

@@ -73,7 +73,6 @@ class GGSearchResultsViewController: UIViewController {
         } else if !passedThroughQuery.isEmpty {
             searchParameters = [URLQueryItem(name: "query", value: passedThroughQuery), URLQueryItem(name: "offset", value: String(offset))]
         }
-        print(searchParameters)
         GGService.shared.getDietaryRecipes(from: .dietaryRecipes, withParameters: searchParameters) { [weak self] result in
             guard let self = self else { return }
             switch result {

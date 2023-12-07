@@ -100,13 +100,11 @@ extension GGMyFridgeViewController: UITableViewDelegate {
 
 extension GGMyFridgeViewController: GGAvailableIngredientsViewControllerDelegate {
     func addedIngredient(ingredient: GGIngredient) {
-        print(ingredient)
         if !myIngredients.contains(ingredient) {
             self.myIngredients.append(ingredient)
         }
         if let index = mutatableIngredients.firstIndex(of: ingredient) {
             mutatableIngredients[index].saved = true
-            print(mutatableIngredients[index])
         }
         
         self.reloadDataSource(with: myIngredients)
