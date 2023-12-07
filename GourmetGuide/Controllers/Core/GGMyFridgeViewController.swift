@@ -23,9 +23,18 @@ class GGMyFridgeViewController: UIViewController {
         let addIngredientButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAvailableIngredients))
         let searchRecipesButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchRecipes))
         navigationItem.rightBarButtonItems = [searchRecipesButton, addIngredientButton]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Clear", style: .done, target: self, action: #selector(clearRecipes))
         configureTableView()
         configureMyIngredientDataSource()
         reloadDataSource(with: myIngredients)
+    }
+    
+    @objc func clearRecipes(){
+        if var snapshot = self.datasource?.snapshot() {
+            myIngredients.removeAll()
+            snapshot.deleteAllItems()
+            self.datasource?.apply(snapshot)
+        }
     }
     
     @objc func showAvailableIngredients(){
@@ -46,6 +55,7 @@ class GGMyFridgeViewController: UIViewController {
                 DispatchQueue.main.async {
                     let destinationVC = GGMyIngredientsResultsViewController()
                     destinationVC.recipesArray = recipes
+                    destinationVC.ingredientsToQuery = ingredientsToQuery
                     self.navigationController?.pushViewController(destinationVC, animated: true)
                 }
             case .failure(let error):

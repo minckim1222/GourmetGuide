@@ -153,7 +153,7 @@ class GGService {
     }
     
     //Function to search API with our ingredients to find recipes
-    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], completed: @escaping(Result<[GGSingleRecipeResponse], GGServiceError>) -> Void){
+    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], offset: Int = 0, completed: @escaping(Result<[GGSingleRecipeResponse], GGServiceError>) -> Void){
         var endpointUrl = Constants.baseUrl + endpoint.rawValue
         var queryItems = ""
         for ingredient in ingredients {
@@ -164,7 +164,7 @@ class GGService {
             return
         }
         print(decodedQueryItems)
-        endpointUrl += "ingredients=\(decodedQueryItems)&apiKey=\(Constants.apiKey)&number=1"
+        endpointUrl += "ingredients=\(decodedQueryItems)&apiKey=\(Constants.apiKey)&offset=\(offset)"
         print(endpointUrl)
         
         guard let url = URL(string: endpointUrl) else {

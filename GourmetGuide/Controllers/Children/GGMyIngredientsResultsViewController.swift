@@ -11,7 +11,8 @@ class GGMyIngredientsResultsViewController: UIViewController {
     
     private let sections = Bundle.main.decode([GGDiscoverSection].self, from: "GGDiscoverSection.json")
     private var offset = 0
-
+    public var ingredientsToQuery: [String] = []
+    private var loadMoreRecipes = true
     private var showMoreRecipes = true
     public var recipesArray: [GGSingleRecipeResponse] = []
     private var collectionView: UICollectionView!
@@ -58,6 +59,25 @@ class GGMyIngredientsResultsViewController: UIViewController {
             self.dataSource?.apply(snapshot)
         }
     }
+    
+    private func loadMoreData(with query: [String]) {
+        GGService.shared.getRecipesWithIngredients(from: .withIngredients, with: query, offset: offset) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let recipes):
+                DispatchQueue.main.async {
+                    self.recipesArray.append(contentsOf: recipes)
+                    self.reloadData()
+                }
+                if recipes.count < 10 {
+                    showMoreRecipes = false
+                }
+                print(recipes)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     //MARK: Compositional Layouts
     
     private func createFeaturedSection(using section: GGDiscoverSection) -> NSCollectionLayoutSection {
@@ -92,6 +112,7 @@ extension GGMyIngredientsResultsViewController: UICollectionViewDelegate {
         guard let item = dataSource?.itemIdentifier(for: indexPath) else {
             return
         }
+        print(item)
         GGService.shared.getSingleRecipe(from: .singleRecipe, with: item.id) { result in
             switch result {
             case .success(let recipe):
@@ -105,16 +126,17 @@ extension GGMyIngredientsResultsViewController: UICollectionViewDelegate {
         }
     }
     
-//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        let offsetY = scrollView.contentOffset.y
-//        let contentHeight = scrollView.contentSize.height
-//        let height = scrollView.frame.size.height
-//        if offsetY > contentHeight - height {
-//            guard showMoreRecipes else { return }
-//            offset += 10
-//            loadMoreData(withParameters: parameters)
-//        }
-//        
-//    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        if offsetY > contentHeight - height {
+            guard showMoreRecipes else { return }
+            offset += 10
+            print(offset)
+            loadMoreData(with: ingredientsToQuery)
+        }
+        
+    }
 }
 

@@ -31,6 +31,26 @@ class GGAvailableIngredientsViewController: UIViewController {
         
     }
     
+    /// Toast message to display what ingredient has been added
+    private func showAddedIngredientToast(with ingredient: GGIngredient){
+        let toastLabel = UILabel(frame: CGRect(x: 0, y: 25, width: self.view.frame.size.width, height: 35))
+        toastLabel.backgroundColor = .systemBackground.withAlphaComponent(0.6)
+        toastLabel.textColor = .label
+        toastLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        toastLabel.textAlignment = .center
+        toastLabel.text = "\(ingredient.ingredient.capitalized) added to your ingredients."
+        toastLabel.alpha = 1
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 1.0, delay: 0.1, options: .curveEaseIn) {
+            toastLabel.alpha = 0.0
+        } completion: { isCompleted in
+            toastLabel.removeFromSuperview()
+        }
+
+    }
+    
     private func configureSearchController(){
             
         searchController.searchResultsUpdater = self
@@ -79,7 +99,7 @@ extension GGAvailableIngredientsViewController: UITableViewDelegate {
 //        if let index = availableIngredients.firstIndex(of: selectedIngredient) {
 //            availableIngredients.remove(at: index)
 //        }
-
+        showAddedIngredientToast(with: selectedIngredient)
         delegate?.addedIngredient(ingredient: selectedIngredient)
         if var snapshot = self.datasource?.snapshot() {
             snapshot.deleteItems([selectedIngredient])
