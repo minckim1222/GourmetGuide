@@ -153,10 +153,8 @@ class GGService {
     }
     
     //Function to search API with our ingredients to find recipes
-    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], completed: @escaping(Result<[GGIngredientResponse], GGServiceError>) -> Void){
+    public func getRecipesWithIngredients(from endpoint: GGEndpoint, with ingredients: [String], completed: @escaping(Result<[GGSingleRecipeResponse], GGServiceError>) -> Void){
         var endpointUrl = Constants.baseUrl + endpoint.rawValue
-//        var components = URLComponents(string: endpointUrl)
-//        let apiKey = URLQueryItem(name: "apiKey", value: Constants.apiKey)
         var queryItems = ""
         for ingredient in ingredients {
             queryItems += "\(ingredient),"
@@ -168,21 +166,12 @@ class GGService {
         print(decodedQueryItems)
         endpointUrl += "ingredients=\(decodedQueryItems)&apiKey=\(Constants.apiKey)&number=1"
         print(endpointUrl)
-//        let decodedQueryItem = URLQueryItem(name: "ingredients", value: queryItems)
-//        print(decodedQueryItem)
-//        let number = URLQueryItem(name: "number", value: String(1))
-//        components?.queryItems = [number, apiKey, decodedQueryItem]
         
         guard let url = URL(string: endpointUrl) else {
             completed(.failure(.invalidUrl))
             return
         }
         print(url)
-        guard let url = URL(string: endpointUrl) else {
-            completed(.failure(.invalidUrl))
-            return
-        }
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
                 completed(.failure(.failedToCreateRequest))
@@ -200,7 +189,7 @@ class GGService {
             
             do {
                 let decoder = JSONDecoder()
-                let recipes = try decoder.decode([GGIngredientResponse].self, from: data)
+                let recipes = try decoder.decode([GGSingleRecipeResponse].self, from: data)
                 completed(.success(recipes))
             } catch {
                 completed(.failure(.failedToDecodeData))

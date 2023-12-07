@@ -40,9 +40,14 @@ class GGMyFridgeViewController: UIViewController {
     @objc func searchRecipes(){
         let ingredientsToQuery = myIngredients.map { $0.ingredient }
         GGService.shared.getRecipesWithIngredients(from: .withIngredients, with: ingredientsToQuery) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let recipes):
-                print(recipes)
+                DispatchQueue.main.async {
+                    let destinationVC = GGMyIngredientsResultsViewController()
+                    destinationVC.recipesArray = recipes
+                    self.navigationController?.pushViewController(destinationVC, animated: true)
+                }
             case .failure(let error):
                 print(error)
             }
@@ -83,9 +88,6 @@ extension GGMyFridgeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let ingredient = datasource?.itemIdentifier(for: indexPath) else {
-            return
-        }
     }
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
