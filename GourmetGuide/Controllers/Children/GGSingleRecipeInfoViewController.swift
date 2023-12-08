@@ -15,6 +15,8 @@ class GGSingleRecipeInfoViewController: UIViewController {
     private let contentView = UIView()
     private let imageView = UIImageView()
     private let titleLabel = GGTitleLabel()
+    private let savedFavoritesImage = UIImageView()
+    private let titleLabelStackView = UIStackView()
     private let summaryLabel = UITextView()
     private var vegan = false
     private var vegetarian = false
@@ -51,8 +53,8 @@ class GGSingleRecipeInfoViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -61,7 +63,7 @@ class GGSingleRecipeInfoViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -100),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
-        contentView.addSubviews(imageView, titleLabel, summaryLabel, recipeInformationStackView)
+        contentView.addSubviews(imageView, titleLabelStackView, summaryLabel, recipeInformationStackView)
         configureImageView()
         configureTitleLabel()
         configureSummaryLabel()
@@ -69,13 +71,23 @@ class GGSingleRecipeInfoViewController: UIViewController {
     }
     
     private func configureTitleLabel(){
+        titleLabelStackView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabelStackView.addArrangedSubviews(titleLabel, savedFavoritesImage)
         titleLabel.text = recipe.title
+        titleLabel.numberOfLines = 0
         
+        savedFavoritesImage.image = UIImage(systemName: "heart")
+        savedFavoritesImage.contentMode = .scaleAspectFit
+        titleLabelStackView.axis = .horizontal
+        titleLabelStackView.distribution = .fillProportionally
+        titleLabelStackView.alignment = .center
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor)
+            titleLabelStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            titleLabelStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            titleLabelStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
+//            savedFavoritesImage.widthAnchor.constraint(equalToConstant: 25),
+//            savedFavoritesImage.heightAnchor.constraint(equalToConstant: 25),
+//            savedFavoritesImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
         ])
     }
     
@@ -86,7 +98,7 @@ class GGSingleRecipeInfoViewController: UIViewController {
         imageView.downloadImage(from: recipe.image)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
+            imageView.topAnchor.constraint(equalTo: titleLabelStackView.bottomAnchor, constant: 25),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
