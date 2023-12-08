@@ -44,7 +44,7 @@ class GGDietaryButton: UIButton {
         super.init(frame: .zero)
         let mealTypeImage = UIImage(named: mealType.rawValue)
         self.setImage(mealTypeImage, for: .normal)
-        self.dietaryType = "meal"
+        self.dietaryType = "type"
         self.dietaryValue = mealType.rawValue
         configure()
     }

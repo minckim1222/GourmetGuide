@@ -132,7 +132,8 @@ class GGSearchViewController: UIViewController {
     /// - Parameter sender: Button pressed of either dietaryType or mealType
     @objc func actionButtonTapped(sender: GGDietaryButton){
 
-        let queryParameters = [URLQueryItem(name: "diet", value: sender.dietaryValue)]
+        let queryParameters = [URLQueryItem(name: sender.dietaryType, value: sender.dietaryValue)]
+        print(sender.dietaryType)
         let resultsVC = GGSearchResultsViewController()
         resultsVC.passedThroughQueryParameters = queryParameters
         resultsVC.passedThroughType = sender.dietaryValue

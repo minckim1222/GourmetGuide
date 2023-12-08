@@ -25,6 +25,9 @@ class GGSearchResultsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Search Results"
+        print(passedThroughType)
+        print(passedThroughQuery)
+        print(passedThroughQueryParameters)
         configureCollectionView()
         createDataSource()
         loadInitialData(withParameters: passedThroughQueryParameters)
@@ -69,7 +72,9 @@ class GGSearchResultsViewController: UIViewController {
     
     private func loadMoreData(withParameters parameters: [URLQueryItem]){
         if !passedThroughType.isEmpty {
-            searchParameters = [URLQueryItem(name: "diet", value: passedThroughType), URLQueryItem(name: "offset", value: String(offset))]
+            searchParameters = passedThroughQueryParameters
+            searchParameters.append(URLQueryItem(name: "offset", value: String(offset)))
+            print(searchParameters)
         } else if !passedThroughQuery.isEmpty {
             searchParameters = [URLQueryItem(name: "query", value: passedThroughQuery), URLQueryItem(name: "offset", value: String(offset))]
         }

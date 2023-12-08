@@ -58,7 +58,7 @@ class GGSingleRecipeInfoViewController: UIViewController {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -100),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
         contentView.addSubviews(imageView, titleLabel, summaryLabel, recipeInformationStackView)
