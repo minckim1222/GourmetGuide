@@ -48,6 +48,7 @@
 		A4F451F62AFAD35E00DF3ECA /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451F52AFAD35E00DF3ECA /* Decoder.swift */; };
 		A4F451F72AFAD38A00DF3ECA /* GGDiscoverSection.json in Resources */ = {isa = PBXBuildFile; fileRef = A4F451F32AFAD29400DF3ECA /* GGDiscoverSection.json */; };
 		A4F451F92AFADC9300DF3ECA /* GGCuisineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F451F82AFADC9300DF3ECA /* GGCuisineType.swift */; };
+		A4FD7F112B278A56003FD2D0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FD7F102B278A56003FD2D0 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		A4F451F32AFAD29400DF3ECA /* GGDiscoverSection.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GGDiscoverSection.json; sourceTree = "<group>"; };
 		A4F451F52AFAD35E00DF3ECA /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		A4F451F82AFADC9300DF3ECA /* GGCuisineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGCuisineType.swift; sourceTree = "<group>"; };
+		A4FD7F102B278A56003FD2D0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 				A4F451F32AFAD29400DF3ECA /* GGDiscoverSection.json */,
 				A4C26D962B1A611100AEC02E /* GGIngredients.json */,
 				A4F451F52AFAD35E00DF3ECA /* Decoder.swift */,
+				A4FD7F102B278A56003FD2D0 /* PersistenceManager.swift */,
 				A4F33EB72AE88A9400778664 /* Models */,
 			);
 			path = Utilities;
@@ -368,6 +371,7 @@
 				A45153472B0D3A5D005B4AED /* GGSearchResultCollectionViewCell.swift in Sources */,
 				A4DB89782B0566BE00EDDD4C /* String+EXT.swift in Sources */,
 				A406628F2AE97D01002560C5 /* GGMainTabBarController.swift in Sources */,
+				A4FD7F112B278A56003FD2D0 /* PersistenceManager.swift in Sources */,
 				A44DFC772B192806006F63FA /* GGIngredient.swift in Sources */,
 				A49CB5C32B02F021008582F4 /* GGRandomRecipeResponse.swift in Sources */,
 				A4C989D12B041547001341CD /* GGSingleRecipeInfoViewController.swift in Sources */,

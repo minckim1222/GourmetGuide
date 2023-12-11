@@ -74,7 +74,6 @@ class GGSearchResultsViewController: UIViewController {
         if !passedThroughType.isEmpty {
             searchParameters = passedThroughQueryParameters
             searchParameters.append(URLQueryItem(name: "offset", value: String(offset)))
-            print(searchParameters)
         } else if !passedThroughQuery.isEmpty {
             searchParameters = [URLQueryItem(name: "query", value: passedThroughQuery), URLQueryItem(name: "offset", value: String(offset))]
         }

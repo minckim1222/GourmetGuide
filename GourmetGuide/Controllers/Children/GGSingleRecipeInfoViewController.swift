@@ -15,9 +15,10 @@ class GGSingleRecipeInfoViewController: UIViewController {
     private let contentView = UIView()
     private let imageView = UIImageView()
     private let titleLabel = GGTitleLabel()
-    private let savedFavoritesImage = UIImageView()
+    private let saveFavoriteButton = UIButton()
     private let titleLabelStackView = UIStackView()
     private let summaryLabel = UITextView()
+    private var savedInFavorites = false
     private var vegan = false
     private var vegetarian = false
     private var glutenFree = false
@@ -30,6 +31,16 @@ class GGSingleRecipeInfoViewController: UIViewController {
         navigationItem.rightBarButtonItem = visitUrlButton
         configureScrollView()
         configureDietaryLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkFavoritesForRecipe()
+        if savedInFavorites {
+            saveFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            saveFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
     
     init(recipe: GGRecipe){
@@ -72,23 +83,62 @@ class GGSingleRecipeInfoViewController: UIViewController {
     
     private func configureTitleLabel(){
         titleLabelStackView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabelStackView.addArrangedSubviews(titleLabel, savedFavoritesImage)
+        titleLabelStackView.addArrangedSubviews(titleLabel, saveFavoriteButton)
         titleLabel.text = recipe.title
         titleLabel.numberOfLines = 0
+        saveFavoriteButton.tintColor = .systemRed
         
-        savedFavoritesImage.image = UIImage(systemName: "heart")
-        savedFavoritesImage.contentMode = .scaleAspectFit
+        saveFavoriteButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         titleLabelStackView.axis = .horizontal
         titleLabelStackView.distribution = .fillProportionally
         titleLabelStackView.alignment = .center
         NSLayoutConstraint.activate([
             titleLabelStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             titleLabelStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            titleLabelStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
+            titleLabelStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            titleLabel.widthAnchor.constraint(lessThanOrEqualTo: contentView.widthAnchor, multiplier: 0.8)
 //            savedFavoritesImage.widthAnchor.constraint(equalToConstant: 25),
 //            savedFavoritesImage.heightAnchor.constraint(equalToConstant: 25),
 //            savedFavoritesImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
         ])
+    }
+    
+    @objc func favoriteButtonTapped(){
+        if !savedInFavorites {
+            saveFavoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            PersistenceManager.updateWith(favorite: recipe, actionType: .add) { error in
+                guard let error = error else {
+                    return
+                }
+                print(error)
+            }
+        } else {
+            saveFavoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            PersistenceManager.updateWith(favorite: recipe, actionType: .remove) { error in
+                guard let error = error else {
+                    return
+                }
+                print(error)
+            }
+        }
+        
+       
+    }
+    
+    private func checkFavoritesForRecipe(){
+        PersistenceManager.retrieveFavorites { [weak self] result in
+            guard let self = self else { return}
+            switch result {
+            case .success(let favorites):
+                if favorites.contains(self.recipe){
+                    self.savedInFavorites = true
+                } else {
+                    self.savedInFavorites = false
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func configureImageView(){
