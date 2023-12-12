@@ -33,7 +33,7 @@ class GGService {
     ///   - completed: Returns a random list of recipes
     public func getRandomRecipes(from endpoint: GGEndpoint, completed: @escaping(Result<[GGRecipe], GGServiceError>) -> Void){
         
-        let endpointUrl = Constants.baseUrl + endpoint.rawValue + "apiKey=\(Constants.apiKey)&number=1"
+        let endpointUrl = Constants.baseUrl + endpoint.rawValue + "apiKey=\(Constants.apiKey)&number=10"
         guard let url = URL(string: endpointUrl) else {
             completed(.failure(.invalidUrl))
             return
